@@ -1,8 +1,8 @@
 {
-  "version": "0.1.0",
+  "version": "0.4.0",
   "as_of": "2026-11-10",
   "title": "OAA369 — Sourced Entity Network",
-  "editorial_note": "A link indicates only the specific cited relationship. It does not establish complicity, intent, coordinated wrongdoing, or individual liability. No private address, live whereabouts or individual finance tracking.",
+  "editorial_note": "Relationship statements are a research seed, not findings of guilt or shared intent. Source-reviewed links have a specific locator in an official or archival source; other edges remain provisional pending a pinpoint citation review. A sourced connection is not a causal inference.",
   "nodes": [
     {
       "id": "p_arthur",
@@ -206,6 +206,27 @@
       "short": "Naming record",
       "kind": "record",
       "summary": "Historic naming arrangements with cultural institutions; not a finding about individual criminal liability."
+    },
+    {
+      "id": "o_knoa_foundation",
+      "label": "Knoa Foundation",
+      "short": "Knoa Foundation",
+      "kind": "organization",
+      "summary": "Nonprofit owner of Knoa Pharma after Purdue ceased operations in May 2026, according to the New York Attorney General."
+    },
+    {
+      "id": "o_gao",
+      "label": "U.S. Government Accountability Office",
+      "short": "GAO",
+      "kind": "regulator",
+      "summary": "Congressional oversight and auditing agency that examined OxyContin marketing, abuse, diversion, and regulatory response in 2003."
+    },
+    {
+      "id": "x_gao_2003",
+      "label": "GAO OxyContin report (2003)",
+      "short": "2003 GAO report",
+      "kind": "record",
+      "summary": "GAO-04-110, published December 19, 2003, describes marketing findings and expressly notes limits in causal inferences from available abuse/diversion data."
     }
   ],
   "edges": [
@@ -222,7 +243,16 @@
       "event_ids": [
         "e02"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0001",
+      "document_locator": null,
+      "start_date": "1942",
+      "end_date": "1942",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r02",
@@ -238,7 +268,16 @@
       "event_ids": [
         "e03"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0002",
+      "document_locator": null,
+      "start_date": "1952",
+      "end_date": "1952",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r03",
@@ -253,7 +292,16 @@
       "event_ids": [
         "e03"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0003",
+      "document_locator": null,
+      "start_date": "1952",
+      "end_date": "1952",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r04",
@@ -268,7 +316,16 @@
       "event_ids": [
         "e03"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0004",
+      "document_locator": null,
+      "start_date": "1952",
+      "end_date": "1952",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r05",
@@ -283,7 +340,16 @@
       "event_ids": [
         "e05"
       ],
-      "note": "The historical businesses and their legal entities are not interchangeable."
+      "note": "The historical businesses and their legal entities are not interchangeable.",
+      "claim_id": "OAA-REL-0005",
+      "document_locator": null,
+      "start_date": "1991",
+      "end_date": "1991",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r06",
@@ -299,7 +365,16 @@
       "event_ids": [
         "e04"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0006",
+      "document_locator": null,
+      "start_date": null,
+      "end_date": null,
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "unresolved"
     },
     {
       "id": "r07",
@@ -315,7 +390,16 @@
       "event_ids": [
         "e04"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0007",
+      "document_locator": null,
+      "start_date": null,
+      "end_date": null,
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "unresolved"
     },
     {
       "id": "r08",
@@ -329,7 +413,16 @@
         "newyorker"
       ],
       "event_ids": [],
-      "note": "Former executive role, not an inference that he personally committed every corporate act."
+      "note": "Former executive role, not an inference that he personally committed every corporate act.",
+      "claim_id": "OAA-REL-0008",
+      "document_locator": null,
+      "start_date": null,
+      "end_date": null,
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "unresolved"
     },
     {
       "id": "r09",
@@ -345,7 +438,16 @@
       "event_ids": [
         "e06"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0009",
+      "document_locator": null,
+      "start_date": "1996",
+      "end_date": "2026",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r10",
@@ -361,7 +463,16 @@
       "event_ids": [
         "e06"
       ],
-      "note": "Regulatory approval is not a finding that the regulator participated in illegal marketing."
+      "note": "Regulatory approval is not a finding that the regulator participated in illegal marketing.",
+      "claim_id": "OAA-REL-0010",
+      "document_locator": null,
+      "start_date": "1995",
+      "end_date": "1995",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r11",
@@ -377,7 +488,16 @@
       "event_ids": [
         "e09"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0011",
+      "document_locator": null,
+      "start_date": "2007",
+      "end_date": "2007",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r12",
@@ -392,7 +512,16 @@
       "event_ids": [
         "e09"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0012",
+      "document_locator": null,
+      "start_date": "2007",
+      "end_date": "2007",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r13",
@@ -407,7 +536,16 @@
       "event_ids": [
         "e15"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0013",
+      "document_locator": null,
+      "start_date": "2020",
+      "end_date": "2020",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r14",
@@ -422,7 +560,16 @@
       "event_ids": [
         "e15"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0014",
+      "document_locator": null,
+      "start_date": "2020",
+      "end_date": "2020",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r15",
@@ -432,12 +579,22 @@
       "when": "2004–2019",
       "status": "admitted",
       "sources": [
-        "doj_2024"
+        "doj_2024",
+        "doj_mckinsey_sof"
       ],
       "event_ids": [
         "e11"
       ],
-      "note": "The 2024 resolution addresses consulting work; it does not make every employee a wrongdoer."
+      "note": "The 2024 resolution addresses consulting work; it does not make every employee a wrongdoer.",
+      "claim_id": "OAA-REL-0015",
+      "document_locator": "Agreed Statement of Facts, United States v. McKinsey & Company, Inc. United States, Doc. 3 (Dec. 13, 2024), paragraphs 3 and 17–18 (pp. 2, 6–7).",
+      "start_date": "2004",
+      "end_date": "2019",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted initial check; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r16",
@@ -450,7 +607,16 @@
         "doj_2024"
       ],
       "event_ids": [],
-      "note": "$650 million resolution under a deferred prosecution and related civil agreement. The exact terms matter."
+      "note": "$650 million resolution under a deferred prosecution and related civil agreement. The exact terms matter.",
+      "claim_id": "OAA-REL-0016",
+      "document_locator": null,
+      "start_date": "2024",
+      "end_date": "2024",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r17",
@@ -466,7 +632,16 @@
         "e08",
         "e12"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0017",
+      "document_locator": null,
+      "start_date": "2007",
+      "end_date": "2007",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r18",
@@ -482,7 +657,16 @@
       "event_ids": [
         "e12"
       ],
-      "note": "A settlement is not itself a finding that all allegations were proved."
+      "note": "A settlement is not itself a finding that all allegations were proved.",
+      "claim_id": "OAA-REL-0018",
+      "document_locator": null,
+      "start_date": "2007",
+      "end_date": "2015",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r19",
@@ -497,7 +681,16 @@
       "event_ids": [
         "e13"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0019",
+      "document_locator": null,
+      "start_date": "2007",
+      "end_date": "2019",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r20",
@@ -513,7 +706,16 @@
       "event_ids": [
         "e13"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0020",
+      "document_locator": null,
+      "start_date": "2016",
+      "end_date": "2019",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r21",
@@ -528,7 +730,16 @@
       "event_ids": [
         "e13"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0021",
+      "document_locator": "UCSF–JHU Kentucky Opioid Litigation Documents, Overview and Background / Documents (the collection describes the 2019 unsealing and 281 records).",
+      "start_date": "2019",
+      "end_date": null,
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted initial check; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r22",
@@ -543,7 +754,16 @@
       "event_ids": [
         "e13"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0022",
+      "document_locator": null,
+      "start_date": "2019",
+      "end_date": null,
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r23",
@@ -558,7 +778,16 @@
       "event_ids": [
         "e13"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0023",
+      "document_locator": null,
+      "start_date": "2019",
+      "end_date": null,
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r24",
@@ -573,7 +802,16 @@
       "event_ids": [
         "e14"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0024",
+      "document_locator": null,
+      "start_date": "2019",
+      "end_date": "2019",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r25",
@@ -588,7 +826,16 @@
       "event_ids": [
         "e17"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0025",
+      "document_locator": null,
+      "start_date": "2024",
+      "end_date": "2024",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r26",
@@ -603,7 +850,16 @@
       "event_ids": [
         "e10"
       ],
-      "note": "Aggregate legal category; does not assign identical conduct or distributions to every family member."
+      "note": "Aggregate legal category; does not assign identical conduct or distributions to every family member.",
+      "claim_id": "OAA-REL-0026",
+      "document_locator": null,
+      "start_date": null,
+      "end_date": null,
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "unresolved"
     },
     {
       "id": "r27",
@@ -618,7 +874,16 @@
       "event_ids": [
         "e10"
       ],
-      "note": "Approximately $11 billion gross reported in Supreme Court opinion; not an accounting of each individual’s net wealth."
+      "note": "Approximately $11 billion gross reported in Supreme Court opinion; not an accounting of each individual’s net wealth.",
+      "claim_id": "OAA-REL-0027",
+      "document_locator": null,
+      "start_date": "2008",
+      "end_date": "2016",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r28",
@@ -634,7 +899,16 @@
         "e18",
         "e19"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0028",
+      "document_locator": null,
+      "start_date": "2025",
+      "end_date": "2026",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r29",
@@ -650,7 +924,16 @@
         "e18",
         "e20"
       ],
-      "note": "Collective obligations, not a statement about individual net worth."
+      "note": "Collective obligations, not a statement about individual net worth.",
+      "claim_id": "OAA-REL-0029",
+      "document_locator": null,
+      "start_date": "2025",
+      "end_date": "2026",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r30",
@@ -666,7 +949,16 @@
         "e18",
         "e20"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0030",
+      "document_locator": null,
+      "start_date": "2025",
+      "end_date": "2026",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r31",
@@ -681,7 +973,16 @@
       "event_ids": [
         "e19"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0031",
+      "document_locator": null,
+      "start_date": "2026",
+      "end_date": "2026",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r32",
@@ -697,7 +998,16 @@
       "event_ids": [
         "e19"
       ],
-      "note": "Knoa is independently overseen; no continuing Sackler ownership should be inferred."
+      "note": "Knoa is independently overseen; no continuing Sackler ownership should be inferred.",
+      "claim_id": "OAA-REL-0032",
+      "document_locator": "New York Attorney General, May 1, 2026, opening announcement: Purdue operations end and Knoa Pharma succeeds them.",
+      "start_date": "2026",
+      "end_date": "2026",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted initial check; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r33",
@@ -712,7 +1022,16 @@
       "event_ids": [
         "e19"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0033",
+      "document_locator": "New York Attorney General, May 1, 2026, opening announcement: corporate successor and restructuring.",
+      "start_date": "2026",
+      "end_date": "2026",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted initial check; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r34",
@@ -727,7 +1046,16 @@
       "event_ids": [
         "e16"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0034",
+      "document_locator": null,
+      "start_date": "2021",
+      "end_date": "2021",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r35",
@@ -742,7 +1070,16 @@
       "event_ids": [
         "e16"
       ],
-      "note": "Institutional naming is not evidence that every family member was involved in opioid marketing."
+      "note": "Institutional naming is not evidence that every family member was involved in opioid marketing.",
+      "claim_id": "OAA-REL-0035",
+      "document_locator": null,
+      "start_date": null,
+      "end_date": null,
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "unresolved"
     },
     {
       "id": "r36",
@@ -758,7 +1095,16 @@
         "e09",
         "e15"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0036",
+      "document_locator": null,
+      "start_date": "2007",
+      "end_date": "2026",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
     },
     {
       "id": "r37",
@@ -773,7 +1119,126 @@
       "event_ids": [
         "e13"
       ],
-      "note": ""
+      "note": "",
+      "claim_id": "OAA-REL-0037",
+      "document_locator": null,
+      "start_date": "2019",
+      "end_date": "2019",
+      "last_reviewed": null,
+      "reviewer": null,
+      "review_status": "needs-review",
+      "correction_history": [],
+      "date_precision": "year"
+    },
+    {
+      "id": "r38",
+      "source": "o_knoa_foundation",
+      "target": "o_knoa",
+      "relation": "owns successor company",
+      "when": "May 1, 2026",
+      "status": "documented",
+      "sources": [
+        "ny_ag"
+      ],
+      "event_ids": [],
+      "note": "",
+      "claim_id": "OAA-REL-0038",
+      "document_locator": "New York Attorney General press release, May 1, 2026: first paragraph, nonprofit foundation ownership and independent oversight.",
+      "start_date": "2026-05-01",
+      "end_date": "2026-05-01",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted initial check; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "day"
+    },
+    {
+      "id": "r39",
+      "source": "o_gao",
+      "target": "x_gao_2003",
+      "relation": "published oversight report",
+      "when": "Dec. 19, 2003",
+      "status": "documented",
+      "sources": [
+        "gao_2003"
+      ],
+      "event_ids": [],
+      "note": "",
+      "claim_id": "OAA-REL-0039",
+      "document_locator": "GAO-04-110 report landing page, publication metadata: published Dec. 19, 2003 (released Jan. 22, 2004).",
+      "start_date": "2003-12-19",
+      "end_date": "2003-12-19",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted initial check; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "day"
+    },
+    {
+      "id": "r40",
+      "source": "x_gao_2003",
+      "target": "o_purdue",
+      "relation": "examined OxyContin marketing practices",
+      "when": "2003",
+      "status": "documented",
+      "sources": [
+        "gao_2003"
+      ],
+      "event_ids": [],
+      "note": "An oversight report examining a company is not an allegation of collusion with the issuing agency.",
+      "claim_id": "OAA-REL-0040",
+      "document_locator": "GAO-04-110, Highlights and Results in Brief: Purdue marketing and promotional practices.",
+      "start_date": "2003",
+      "end_date": "2003",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted initial check; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "year"
+    },
+    {
+      "id": "r41",
+      "source": "x_gao_2003",
+      "target": "o_fda",
+      "relation": "examined regulatory actions on OxyContin",
+      "when": "2003",
+      "status": "documented",
+      "sources": [
+        "gao_2003"
+      ],
+      "event_ids": [],
+      "note": "",
+      "claim_id": "OAA-REL-0041",
+      "document_locator": "GAO-04-110, Highlights and Results in Brief: FDA labeling and advertising oversight.",
+      "start_date": "2003",
+      "end_date": "2003",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted initial check; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "year"
+    },
+    {
+      "id": "r42",
+      "source": "o_fda",
+      "target": "d_oxy",
+      "relation": "revised warning and labeling",
+      "when": "2001",
+      "status": "documented",
+      "sources": [
+        "gao_2003"
+      ],
+      "event_ids": [],
+      "note": "",
+      "claim_id": "OAA-REL-0042",
+      "document_locator": "GAO-04-110, Results in Brief and Appendix II: summary of FDA changes to original OxyContin label in 2001.",
+      "start_date": "2001",
+      "end_date": "2001",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted initial check; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "year"
     }
   ]
 }

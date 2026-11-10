@@ -70,3 +70,19 @@
 @media(max-width:1040px){.network-grid{grid-template-columns:1fr}.network-inspector{border-left:none;border-top:1px solid var(--edge2);max-height:none}.network-scroll{height:460px}.network-toggle{margin-left:0}}
 @media(max-width:600px){.network-toolbar{padding:15px;gap:13px}.network-toolbar label:not(.network-toggle){max-width:none;min-width:100%}.network-summary{padding:12px 15px}.network-map-heading span:last-child{display:none}.network-scroll{height:370px}.network-inspector{padding:18px}.network-footer{padding:15px}.network-actions button{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.network-node{transition:none}}
+
+/* Source audit and distinction between evidence presence and pinpoint review */
+.network-audit-banner{display:flex;align-items:flex-start;gap:10px;padding:13px 25px;background:#182c31;border-top:1px solid #365457;border-bottom:1px solid #365457;color:#c2d7d2}
+.network-audit-banner svg{flex-shrink:0;color:#dfbc7c;margin-top:2px}
+.network-audit-banner p{margin:0;font-size:12px;line-height:1.65}
+.network-audit-banner strong{color:#f3deaf;font-weight:700}
+.network-claim-ref{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:8px 0 4px}
+.network-claim-ref code{font-size:10px;color:#b7c8d1;letter-spacing:.3px;background:#182a31;border:1px solid #344b53;padding:3px 5px;border-radius:3px}
+.network-claim-ref span{font-size:10px;padding:3px 6px;border:1px solid;border-radius:3px}
+.audit-checked{color:#b4d4b6;background:#1d3429;border-color:#507859!important}
+.audit-pending{color:#e5cc9e;background:#403621;border-color:#836b3d!important}
+.network-locator{font-size:11px!important;line-height:1.55!important;color:#b6c9cd;margin:7px 0 4px!important}
+.network-locator b{color:#e9e4d6}
+.network-locator.pending{color:#d1bb95}
+.network-reviewed-on{display:block;color:#9fbdb6;font-size:10px}
+@media(max-width:600px){.network-audit-banner{padding:12px 15px}}

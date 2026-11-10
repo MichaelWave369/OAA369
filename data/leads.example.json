@@ -1,0 +1,5 @@
+{
+  "schema_version": "0.1.0",
+  "notice": "Template only. Store live candidate leads in data/leads.local.json, which is gitignored and never imported into the public graph.",
+  "leads": []
+}

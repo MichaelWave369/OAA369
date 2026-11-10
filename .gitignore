@@ -5,3 +5,5 @@ dist/
 .env.*
 !.env.example
 .DS_Store
+# Research-stage candidates are local only; no publication without review
+data/leads.local.json

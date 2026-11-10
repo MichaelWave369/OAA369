@@ -10,6 +10,14 @@ export const entityKinds = {
 };
 
 export const linkStatuses = new Set(['admitted','adjudicated','documented','reported','alleged','disputed']);
+export const reviewStatuses = new Set(['source-reviewed', 'needs-review']);
+export function reviewSummary(graph = relationshipAtlas) {
+  const checked = graph.edges.filter(e => e.review_status === 'source-reviewed').length;
+  return { checked, pending: graph.edges.length - checked, total: graph.edges.length };
+}
+function eligible(edge, { includeReported = true, reviewedOnly = false } = {}) {
+  return (includeReported || edge.status !== 'reported') && (!reviewedOnly || edge.review_status === 'source-reviewed');
+}
 export const defaultRoot = 'o_purdue';
 
 export function buildIndex(graph = relationshipAtlas) {
@@ -27,15 +35,15 @@ export function otherEnd(edge, id) {
   return edge.source === id ? edge.target : edge.source;
 }
 
-export function incidentLinks(id, graph = relationshipAtlas, { includeReported = true } = {}) {
+export function incidentLinks(id, graph = relationshipAtlas, { includeReported = true, reviewedOnly = false } = {}) {
   const { nodes, adjacency } = buildIndex(graph);
-  return (adjacency.get(id) || []).filter(edge => (includeReported || edge.status !== 'reported') && nodes.has(otherEnd(edge, id)));
+  return (adjacency.get(id) || []).filter(edge => eligible(edge, { includeReported, reviewedOnly }) && nodes.has(otherEnd(edge, id)));
 }
 
 // Breadth-first expansion treats links as undirected solely for navigation. The labels retain direction.
 // Depth limits avoid a hairball; an entity outside the current view is not declared unrelated.
 export function expandNetwork(root = defaultRoot, depth = 2, graph = relationshipAtlas,
-  { includeReported = true, limit = 42 } = {}) {
+  { includeReported = true, reviewedOnly = false, limit = 42 } = {}) {
   const { nodes, adjacency } = buildIndex(graph);
   if (!nodes.has(root)) return { nodes: [], edges: [], distances: {}, truncated: false };
   const maxDepth = Math.min(3, Math.max(1, Number(depth) || 1));
@@ -47,7 +55,7 @@ export function expandNetwork(root = defaultRoot, depth = 2, graph = relationshi
     const id = queue[cursor++];
     if (distances[id] >= maxDepth) continue;
     const neighbors = (adjacency.get(id) || [])
-      .filter(e => includeReported || e.status !== 'reported')
+      .filter(e => eligible(e, { includeReported, reviewedOnly }))
       .map(e => otherEnd(e, id))
       .filter(next => nodes.has(next))
       .sort((a,b) => nodes.get(a).label.localeCompare(nodes.get(b).label));
@@ -59,12 +67,12 @@ export function expandNetwork(root = defaultRoot, depth = 2, graph = relationshi
     }
   }
   const visible = new Set(queue);
-  const edges = graph.edges.filter(edge => visible.has(edge.source) && visible.has(edge.target) && (includeReported || edge.status !== 'reported'));
+  const edges = graph.edges.filter(edge => visible.has(edge.source) && visible.has(edge.target) && eligible(edge, { includeReported, reviewedOnly }));
   return { nodes: queue.map(id => nodes.get(id)), edges, distances, truncated };
 }
 
 // Returns an explicit, shortest link path; the existence of a path proves no causal connection.
-export function shortestRelationshipPath(from, to, graph = relationshipAtlas, { includeReported = true } = {}) {
+export function shortestRelationshipPath(from, to, graph = relationshipAtlas, { includeReported = true, reviewedOnly = false } = {}) {
   const { nodes, adjacency } = buildIndex(graph);
   if (!nodes.has(from) || !nodes.has(to)) return null;
   if (from === to) return { nodes: [from], edges: [] };
@@ -74,7 +82,7 @@ export function shortestRelationshipPath(from, to, graph = relationshipAtlas, { 
   for (let i = 0; i < queue.length; i++) {
     const id = queue[i];
     for (const edge of adjacency.get(id) || []) {
-      if (!includeReported && edge.status === 'reported') continue;
+      if (!eligible(edge, { includeReported, reviewedOnly })) continue;
       const next = otherEnd(edge,id);
       if (!nodes.has(next) || visited.has(next)) continue;
       visited.add(next);
@@ -98,9 +106,10 @@ export function shortestRelationshipPath(from, to, graph = relationshipAtlas, { 
 
 export function relationshipCsv(graph = relationshipAtlas) {
   const { nodes } = buildIndex(graph);
-  const head = ['Edge ID','From','Relationship','To','When','Status','Source URLs','Linked timeline IDs','Editorial note'];
-  const rows = graph.edges.map(e => [e.id,nodes.get(e.source)?.label,e.relation,nodes.get(e.target)?.label,e.when,e.status,
-    e.sources.map(id => graphSourceUrl(id)).join(' | '),e.event_ids.join(' | '),e.note]);
+  const head = ['Edge ID','Claim ID','From','Relationship','To','When','Evidence status','Source review','Document locator','Reviewed on','Reviewer','Source URLs','Linked timeline IDs','Editorial note','Correction count'];
+  const rows = graph.edges.map(e => [e.id,e.claim_id,nodes.get(e.source)?.label,e.relation,nodes.get(e.target)?.label,e.when,e.status,
+    e.review_status,e.document_locator ?? '',e.last_reviewed ?? '',e.reviewer ?? '',
+    e.sources.map(id => graphSourceUrl(id)).join(' | '),e.event_ids.join(' | '),e.note,e.correction_history?.length ?? 0]);
   return [head,...rows].map(row => row.map(toCsvCell).join(',')).join('\r\n');
 }
 function graphSourceUrl(id) {
