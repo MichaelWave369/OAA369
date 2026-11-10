@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight, ChevronDown, Compass, Download, ExternalLink,
   Layers3, Link2, Search, ShieldCheck, Waypoints } from 'lucide-react';
 import { atlas, sourceUrl, statusDefinitions } from './data.js';
 import { relationshipAtlas, entityKinds, defaultRoot, expandNetwork, incidentLinks,
-  otherEnd, shortestRelationshipPath, relationshipCsv } from './network.js';
+  otherEnd, shortestRelationshipPath, relationshipCsv, reviewSummary } from './network.js';
 import './network.css';
 
 const KIND_COLORS = {
@@ -57,7 +57,7 @@ function NetworkDiagram({ view, root, selected, onSelect, includeReported }) {
           : `M${start.x},${start.y} C${(start.x+end.x)/2},${start.y} ${(start.x+end.x)/2},${end.y} ${end.x},${end.y}`;
         const highlighted = selected && (edge.source===selected || edge.target===selected);
         return <path key={edge.id} d={path} fill="none" stroke={highlighted?'#e4b96e':'#52707c'} strokeWidth={highlighted?2.4:1.1} strokeOpacity={highlighted?.91:.33}
-          strokeDasharray={edge.status==='reported'?'5 5':undefined} />;
+          strokeDasharray={edge.review_status !== 'source-reviewed' ? '3 7' : edge.status === 'reported' ? '6 3' : undefined} />;
       })}
       {view.nodes.map(node=>{
         const {x,y}=layout.positions.get(node.id);
@@ -92,6 +92,13 @@ function RelationDetails({ edge, selectedId, onSelect }) {
     <div className="network-relation-top"><button type="button" onClick={()=>onSelect(opposite.id)}>{opposite.label}<ArrowUpRight size={14}/></button>{statusPill(edge.status)}</div>
     <p><b>{from.label}</b> <span>{edge.relation}</span> <b>{to.label}</b></p>
     <small>{edge.when}{edge.event_ids.length?` · Timeline ${edge.event_ids.join(', ')}`:''}</small>
+    <div className="network-claim-ref"><code>{edge.claim_id}</code>
+      <span className={edge.review_status === 'source-reviewed' ? 'audit-checked' : 'audit-pending'}>
+      {edge.review_status === 'source-reviewed' ? 'Pinpoint source checked' : 'Pinpoint review pending'}</span>
+    </div>
+    {edge.document_locator ? <p className="network-locator"><b>Where to look:</b> {edge.document_locator}</p>
+      : <p className="network-locator pending">This record has a source link, but no independently checked passage locator yet.</p>}
+    {edge.last_reviewed && <small className="network-reviewed-on">Source check: {edge.last_reviewed} · {edge.reviewer}</small>}
     {edge.note && <p className="network-relation-note">{edge.note}</p>}
     <SourceLinks ids={edge.sources}/>
   </li>;
@@ -102,29 +109,35 @@ export default function NetworkExplorer() {
   const [selected,setSelected]=useState(defaultRoot);
   const [depth,setDepth]=useState(2);
   const [includeReported,setIncludeReported]=useState(true);
+  const [reviewedOnly,setReviewedOnly]=useState(false);
   const [search,setSearch]=useState('');
   const [showAll,setShowAll]=useState(false);
   const allNodes=relationshipAtlas.nodes;
-  const view=useMemo(()=>expandNetwork(root,depth,relationshipAtlas,{includeReported,limit:42}),[root,depth,includeReported]);
+  const audit=reviewSummary(relationshipAtlas);
+  const view=useMemo(()=>expandNetwork(root,depth,relationshipAtlas,{includeReported,reviewedOnly,limit:42}),[root,depth,includeReported,reviewedOnly]);
   const info=allNodes.find(n=>n.id===selected) || allNodes.find(n=>n.id===root);
-  const activeRelations=useMemo(()=>incidentLinks(info.id,relationshipAtlas,{includeReported}).sort((a,b)=>a.relation.localeCompare(b.relation)),[info,includeReported]);
+  const activeRelations=useMemo(()=>incidentLinks(info.id,relationshipAtlas,{includeReported,reviewedOnly}).sort((a,b)=>a.relation.localeCompare(b.relation)),[info,includeReported,reviewedOnly]);
   const showing=showAll?activeRelations:activeRelations.slice(0,8);
   const matches=search.trim()?allNodes.filter(n=>`${n.label} ${n.kind} ${n.summary}`.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())).slice(0,8):[];
-  const path=shortestRelationshipPath(root,selected,relationshipAtlas,{includeReported});
+  const path=shortestRelationshipPath(root,selected,relationshipAtlas,{includeReported,reviewedOnly});
   const graphNodes=new Map(allNodes.map(n=>[n.id,n]));
   function focus(id){setRoot(id);setSelected(id);setShowAll(false);setSearch('');}
   function select(id){setSelected(id);setShowAll(false);}
   function download(name,data,type){const blob=new Blob([data],{type});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);}
   return <section id="network" className="section network-section">
     <div className="section-head"><div><div className="eyebrow small">02 / RECURSIVE ENTITY EXPLORER</div><h2>Every connection <em>opens another.</em></h2></div>
-      <p>Follow the source from one entity to the next. Expand by one, two, or three hops. A connection is not an accusation or evidence of coordinated intent.</p></div>
+      <p>Follow the source from one entity to the next. Expand by one, two, or three hops. A connection is not an accusation or evidence of coordinated intent. Read the citation locator and review state before interpreting any link.</p></div>
     <div className="network-outer">
       <div className="network-toolbar">
         <label><span>STARTING ENTITY</span><div className="network-select"><select value={root} onChange={e=>focus(e.target.value)}>{[...allNodes].sort((a,b)=>a.label.localeCompare(b.label)).map(n=><option value={n.id} key={n.id}>{n.label}</option>)}</select><ChevronDown size={16}/></div></label>
         <div className="network-depth" role="group" aria-label="Relationship expansion distance"><span>EXPANSION</span><div>{[1,2,3].map(h=><button key={h} type="button" aria-pressed={depth===h} onClick={()=>setDepth(h)}>{h} hop{h>1?'s':''}</button>)}</div></div>
         <label className="network-toggle"><input type="checkbox" checked={includeReported} onChange={e=>setIncludeReported(e.target.checked)}/><span>Include attributed reporting</span></label>
+        <label className="network-toggle"><input type="checkbox" checked={reviewedOnly} onChange={e=>setReviewedOnly(e.target.checked)}/><span>Pinpoint-reviewed links only</span></label>
       </div>
-      <div className="network-summary"><div><Waypoints size={16}/> {view.nodes.length} ENTITIES · {view.edges.length} SOURCED LINKS · {depth} HOP{depth===1?'':'S'}</div><span>Solid = documented or formal · Dotted = reported</span></div>
+      <div className="network-audit-banner" role="status">
+        <ShieldCheck size={17}/><p><strong>{audit.checked} / {audit.total}</strong> relationship records have a checked source locator. <strong>{audit.pending}</strong> remain in the published research seed pending pinpoint review. No review state implies guilt, causation, or individual culpability.</p>
+      </div>
+      <div className="network-summary"><div><Waypoints size={16}/> {view.nodes.length} ENTITIES · {view.edges.length} LINKS IN VIEW · {depth} HOP{depth===1?'':'S'}</div><span>Dashed = awaiting pinpoint review · Solid = locator checked</span></div>
       <div className="network-grid">
         <div className="network-map-frame"><div className="network-map-heading"><span><Compass size={16}/> INTERACTIVE EVIDENCE NETWORK</span><span>Click an entity to examine its trail</span></div>
           <NetworkDiagram view={view} root={root} selected={selected} onSelect={select} includeReported={includeReported}/>
@@ -145,7 +158,7 @@ export default function NetworkExplorer() {
           {activeRelations.length>8&&<button className="network-show-more" type="button" onClick={()=>setShowAll(x=>!x)}>{showAll?'Show fewer':`View all ${activeRelations.length} relationships`} <ChevronDown size={14}/></button>}
         </aside>
       </div>
-      <div className="network-footer"><p><ShieldCheck size={18}/> Every displayed edge must cite an existing source. Closeness in the graph never implies culpability. Source-level citations are not yet page-specific; those will be added as the archive is indexed.</p>
+      <div className="network-footer"><p><ShieldCheck size={18}/> All links carry source references; the review toggle restricts the graph to links whose specific source passage was checked. A path is never proof of causation or misconduct. Review remains ongoing.</p>
         <div><button type="button" onClick={()=>download('oaa369-relationships.json',JSON.stringify(relationshipAtlas,null,2),'application/json')}><Download size={14}/> Export network JSON</button><button type="button" onClick={()=>download('oaa369-relationships.csv','\ufeff'+relationshipCsv(relationshipAtlas),'text/csv;charset=utf-8')}><Download size={14}/> Export link CSV</button></div></div>
     </div>
   </section>;

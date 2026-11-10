@@ -38,7 +38,7 @@ Follow organizations' public conduct and public court matters, never live person
 - Motive can be explored through documents and incentives; private intentions are not directly knowable.
 - Prescription opioids have legitimate clinical uses, which is distinct from corporate misconduct and deceptive promotion.
 
-## The relationship network (v0.3)
+## The relationship network (v0.4)
 
 `data/relationships.json` is a **separate ledger** of stable entity nodes and attributed edges.
 
@@ -46,7 +46,19 @@ A graph edge must include a stable ID, directional `source` and `target` IDs, a 
 
 A visible route like `A → B → C` does **not** demonstrate that A knew C, that A caused C, or that A and C collaborated. Co-occurrence does not justify creating an edge. A discovery candidate lives in the research backlog until its exact relationship is documented, independently checked and reviewed. Do not extrapolate from co-investment, corporate ownership, donations, lawsuits or geographic proximity to criminal wrongdoing.
 
-Source URLs in the initial graph point to relevant public records or reporting, but often **not to page/paragraph-level evidence**. Source-level references are an explicitly unfinished part of this first release; do not describe them as full claim-level verification. Prioritize adding original documents and exact locators, then independent review. Date fields for broad historical periods should be converted to machine-readable start/end dates when verified.
+The graph distinguishes **evidence status** (`documented`, `reported`, `admitted`, `adjudicated` etc.) from **source-audit status** (`needs-review` vs `source-reviewed`). The latter means a specific passage in an identified public source has been checked for that narrow fact; **it does not mean independent peer review**. No checked status implies the individuals linked are guilty of anything. The v0.4 seed has 9 locator-checked links and 33 links still needing pinpoint review. Do not describe source-level links as fully validated claims.
+
+Every edge now carries `claim_id`, `document_locator`, `start_date`, `end_date`, `date_precision`, `reviewer`, `last_reviewed` and `correction_history`. Keep unresolved dates as null rather than implying calendar-day precision from a year or a vague period. A checked source must include an exact section, paragraph or comparable locator; whole archive titles alone do not suffice when a specific original document is available.
+
+### Lead admission and review (no automatic publishing)
+
+1. Record a lead in the local **unpublished** `data/leads.local.json`; use `data/leads.example.json` for its format. Never commit the private ledger to the public repository. 
+2. Resolve entity IDs and names; inspect the primary record; note its publication date, scope, and exact passage. Do not copy speculation into `data/relationships.json`.
+3. Run `npm run leads:check -- data/leads.local.json`. The gate rejects unapproved leads, unknown entity or source IDs, missing locators, reviewers, and review dates.
+4. Even a passing lead is **not automatically promoted**. A GitHub PR must add the specific public relationship, direct source ID, locator, correction history and relevant tests. Peer review is encouraged where available.
+5. Corrections must append date, editor, nature of change, and an explanation; do not silently rewrite the record or erase disputed interpretations.
+
+The local lead queue may contain non-public research notes, so keep it private and avoid collecting personal details unrelated to documented public conduct.
 
 ### Expansion guardrails
 

@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.4.0",
   "as_of": "2026-11-10",
   "project": "Opioid Accountability Atlas",
   "sources": {
@@ -116,6 +116,18 @@
       "title": "The Family That Built an Empire of Pain",
       "url": "https://www.newyorker.com/magazine/2017/10/30/the-family-that-built-an-empire-of-pain",
       "type": "Investigative reporting"
+    },
+    "gao_2003": {
+      "publisher": "U.S. Government Accountability Office",
+      "title": "Prescription Drugs: OxyContin Abuse and Diversion and Efforts to Address the Problem (GAO-04-110)",
+      "url": "https://www.gao.gov/products/gao-04-110",
+      "type": "Primary government report"
+    },
+    "doj_mckinsey_sof": {
+      "publisher": "U.S. Department of Justice",
+      "title": "United States v. McKinsey, Agreed Statement of Facts (Dec. 13, 2024)",
+      "url": "https://www.justice.gov/archives/opa/media/1380371/dl",
+      "type": "Primary court filing"
     }
   },
   "events": [
