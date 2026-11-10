@@ -1,0 +1,472 @@
+{
+  "version": "0.1.0",
+  "as_of": "2026-11-10",
+  "project": "Opioid Accountability Atlas",
+  "sources": {
+    "harvard": {
+      "publisher": "Harvard University",
+      "title": "Arthur M. Sackler denaming history",
+      "url": "https://www.harvard.edu/denamingproposals/arthur-m-sackler-building-and-museum/",
+      "type": "Institutional history"
+    },
+    "harvard_report": {
+      "publisher": "Harvard University",
+      "title": "Arthur Sackler historical research report",
+      "url": "https://www.harvard.edu/wp-content/uploads/2024/08/Sackler-denaming-report-final.pdf",
+      "type": "Historical research"
+    },
+    "fortune": {
+      "publisher": "Fortune",
+      "title": "OxyContin: Purdue Pharma’s painful medicine",
+      "url": "https://fortune.com/2011/11/09/oxycontin-purdue-pharmas-painful-medicine/",
+      "type": "Reporting"
+    },
+    "propublica": {
+      "publisher": "ProPublica",
+      "title": "Sacklers Who Disavow OxyContin May Have Benefited From It",
+      "url": "https://www.propublica.org/article/sacklers-who-disavow-oxycontin-may-have-benefited-from-it",
+      "type": "Investigative reporting"
+    },
+    "doj_2020": {
+      "publisher": "U.S. Department of Justice",
+      "title": "United States v. Purdue Pharma, L.P.",
+      "url": "https://www.justice.gov/criminal/criminal-vns/case/united-states-v-purdue-pharma-lp",
+      "type": "Primary legal record"
+    },
+    "doj_2024": {
+      "publisher": "U.S. Department of Justice",
+      "title": "McKinsey and Purdue Pharma resolution",
+      "url": "https://www.justice.gov/usao-ma/pr/justice-department-announces-resolution-criminal-and-civil-investigations-mckinsey",
+      "type": "Primary legal record"
+    },
+    "ucsf_ky": {
+      "publisher": "UCSF / Johns Hopkins",
+      "title": "Kentucky opioid litigation documents",
+      "url": "https://www.industrydocuments.ucsf.edu/opioids/collections/kentucky-opioid-litigation-documents/",
+      "type": "Primary document archive"
+    },
+    "ucsf_archive": {
+      "publisher": "UCSF / Johns Hopkins",
+      "title": "Opioid Industry Documents Archive",
+      "url": "https://www.industrydocuments.ucsf.edu/opioids/",
+      "type": "Primary document archive"
+    },
+    "ucsf_faq": {
+      "publisher": "UCSF / Johns Hopkins",
+      "title": "Archive FAQ: the 2026 disclosure requirement",
+      "url": "https://www.industrydocuments.ucsf.edu/help/faq/",
+      "type": "Archival status"
+    },
+    "stat": {
+      "publisher": "STAT",
+      "title": "OxyContin history told through unsealed Purdue documents",
+      "url": "https://www.statnews.com/2019/12/03/oxycontin-history-told-through-purdue-pharma-documents/",
+      "type": "Investigative reporting"
+    },
+    "westvirginia": {
+      "publisher": "National Library of Medicine / AJPH",
+      "title": "Litigation against opioid manufacturers",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5871135/",
+      "type": "Peer-reviewed analysis"
+    },
+    "scotus": {
+      "publisher": "U.S. Supreme Court via Cornell",
+      "title": "Harrington v. Purdue Pharma, 2024",
+      "url": "https://www.law.cornell.edu/supremecourt/text/23-124",
+      "type": "Primary legal record"
+    },
+    "ny_ag": {
+      "publisher": "New York Attorney General",
+      "title": "Purdue shutdown and Knoa Pharma, May 2026",
+      "url": "https://ag.ny.gov/press-release/2026/attorney-general-james-announces-shutdown-opioid-manufacturer-purdue-pharma",
+      "type": "Official announcement"
+    },
+    "ca_ag": {
+      "publisher": "California Attorney General",
+      "title": "$7.4 billion settlement effective May 2026",
+      "url": "https://www.oag.ca.gov/news/press-releases/attorney-general-bonta-announces-74-billion-purdue-pharma-and-sackler-family",
+      "type": "Official announcement"
+    },
+    "ky_ag": {
+      "publisher": "Kentucky Attorney General",
+      "title": "Kentucky settlement announcement, June 2025",
+      "url": "https://www.kentucky.gov/Pages/Activity-stream.aspx?n=AttorneyGeneral&prId=1779",
+      "type": "Official announcement"
+    },
+    "met": {
+      "publisher": "The Metropolitan Museum of Art",
+      "title": "Removal of Sackler family name, December 2021",
+      "url": "https://www.metmuseum.org/press-releases/the-met-and-sackler-families-announce-removal-of-the-family-name-in-dedicated-galleries-2021-news",
+      "type": "Official announcement"
+    },
+    "reuters_2026": {
+      "publisher": "Reuters",
+      "title": "Richard Sackler property-sale dispute, October 2026",
+      "url": "https://www.reuters.com/legal/government/richard-sackler-loses-bid-keep-mansion-despite-purdue-settlement-2026-10-28/",
+      "type": "Reported court decision"
+    },
+    "abc": {
+      "publisher": "ABC News",
+      "title": "Arthur branch and Purdue corporate history",
+      "url": "https://abcnews.com/US/nyu-langone-longer-accepting-donations-sacklers-family-owns/story?id=63502900",
+      "type": "Reporting"
+    },
+    "newyorker": {
+      "publisher": "The New Yorker",
+      "title": "The Family That Built an Empire of Pain",
+      "url": "https://www.newyorker.com/magazine/2017/10/30/the-family-that-built-an-empire-of-pain",
+      "type": "Investigative reporting"
+    }
+  },
+  "events": [
+    {
+      "id": "e01",
+      "when": "1910s",
+      "title": "Brooklyn beginnings",
+      "description": "The Sackler brothers grew up in a Brooklyn immigrant family whose parents ran a grocery store. All three later trained as physicians.",
+      "category": "origins",
+      "status": "reported",
+      "sources": [
+        "fortune",
+        "harvard_report"
+      ]
+    },
+    {
+      "id": "e02",
+      "when": "1942",
+      "title": "The physician-to-physician advertising model",
+      "description": "Arthur Sackler joined William Douglas McAdams, an agency focused on pharmaceutical advertising. His later campaigns targeted medical professionals through journals and sales representatives.",
+      "category": "origins",
+      "status": "documented",
+      "sources": [
+        "harvard_report"
+      ]
+    },
+    {
+      "id": "e03",
+      "when": "1952",
+      "title": "Sackler family enters Purdue",
+      "description": "The brothers acquired Purdue Frederick, then a small drug company. Family-controlled pharmaceutical businesses expanded over subsequent decades.",
+      "category": "origins",
+      "status": "documented",
+      "sources": [
+        "harvard",
+        "fortune"
+      ]
+    },
+    {
+      "id": "e04",
+      "when": "1987",
+      "title": "The family branches diverge",
+      "description": "Arthur Sackler died nine years before OxyContin launched. His estate sold its stake to Mortimer and Raymond; questions about later estate payments require separate treatment from direct OxyContin management.",
+      "category": "people",
+      "status": "documented",
+      "sources": [
+        "propublica",
+        "harvard"
+      ]
+    },
+    {
+      "id": "e05",
+      "when": "1991",
+      "title": "Purdue Pharma incorporated",
+      "description": "The Purdue Pharma entity associated with the later OxyContin rollout was incorporated.",
+      "category": "origins",
+      "status": "reported",
+      "sources": [
+        "abc"
+      ]
+    },
+    {
+      "id": "e06",
+      "when": "1995–1996",
+      "title": "OxyContin approved and introduced",
+      "description": "OxyContin received FDA approval in 1995 and entered the U.S. market in 1996, with extended-release oxycodone as its active medication.",
+      "category": "marketing",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky",
+        "scotus"
+      ]
+    },
+    {
+      "id": "e07",
+      "when": "1996–2001",
+      "title": "Misleading marketing claims",
+      "description": "Purdue Frederick later admitted promoting OxyContin as less addictive and less susceptible to abuse than other pain medicines, despite knowing those claims were false.",
+      "category": "marketing",
+      "status": "admitted",
+      "sources": [
+        "doj_2020",
+        "westvirginia"
+      ]
+    },
+    {
+      "id": "e08",
+      "when": "2001",
+      "title": "Early state litigation",
+      "description": "West Virginia sued Purdue over alleged illegal marketing; other state actions followed. A lawsuit alleges conduct, and is not by itself a finding of liability.",
+      "category": "legal",
+      "status": "documented",
+      "sources": [
+        "westvirginia"
+      ]
+    },
+    {
+      "id": "e09",
+      "when": "2007",
+      "title": "Federal misbranding plea",
+      "description": "Purdue Frederick pleaded guilty to felony misbranding; three executives pleaded guilty to misdemeanor misbranding offenses. The company and executives faced financial penalties.",
+      "category": "legal",
+      "status": "admitted",
+      "sources": [
+        "westvirginia",
+        "doj_2020"
+      ]
+    },
+    {
+      "id": "e10",
+      "when": "2008–2016",
+      "title": "Billions distributed to the family",
+      "description": "The Supreme Court described approximately $11 billion in distributions from Purdue to Sackler family interests during this period, including funds routed through trusts and companies. Distributions are not identical to spendable after-tax cash.",
+      "category": "money",
+      "status": "documented",
+      "sources": [
+        "scotus"
+      ]
+    },
+    {
+      "id": "e11",
+      "when": "2010",
+      "title": "OxyContin reformulated",
+      "description": "Purdue introduced abuse-deterrent reformulated OxyContin. The DOJ later described consulting work focused on protecting market share and Purdue’s analysis of declining prescriptions.",
+      "category": "marketing",
+      "status": "documented",
+      "sources": [
+        "doj_2024"
+      ]
+    },
+    {
+      "id": "e12",
+      "when": "2015",
+      "title": "Kentucky settles for $24 million",
+      "description": "Kentucky settled its Purdue lawsuit for $24 million. Some key documents were later unsealed after journalists challenged secrecy.",
+      "category": "kentucky",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky",
+        "ky_ag"
+      ]
+    },
+    {
+      "id": "e13",
+      "when": "2019",
+      "title": "Pike County records unsealed",
+      "description": "Following STAT’s legal efforts, Kentucky court records became public, exposing internal plans, emails and marketing materials from as early as the 1990s.",
+      "category": "kentucky",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky",
+        "stat"
+      ]
+    },
+    {
+      "id": "e14",
+      "when": "2019",
+      "title": "Purdue files for bankruptcy",
+      "description": "The company entered Chapter 11 bankruptcy under mounting opioid litigation. The settlement and claims process continued for years.",
+      "category": "legal",
+      "status": "documented",
+      "sources": [
+        "scotus"
+      ]
+    },
+    {
+      "id": "e15",
+      "when": "2020",
+      "title": "Additional federal guilty plea",
+      "description": "Purdue pleaded guilty to fraud and kickback conspiracies relating to opioid marketing and anti-diversion obligations. These were corporate guilty pleas, not convictions of individual Sackler family members.",
+      "category": "legal",
+      "status": "admitted",
+      "sources": [
+        "doj_2020"
+      ]
+    },
+    {
+      "id": "e16",
+      "when": "2021",
+      "title": "Museum naming reckoning",
+      "description": "The Metropolitan Museum of Art announced that seven named exhibition spaces, including the Temple of Dendur wing, would no longer bear the Sackler name.",
+      "category": "wealth",
+      "status": "documented",
+      "sources": [
+        "met"
+      ]
+    },
+    {
+      "id": "e17",
+      "when": "2024",
+      "title": "Supreme Court rejects nonconsensual releases",
+      "description": "The Supreme Court held that the bankruptcy code did not permit the proposed broad releases of claims against Sacklers without affected claimants’ consent.",
+      "category": "legal",
+      "status": "documented",
+      "sources": [
+        "scotus"
+      ]
+    },
+    {
+      "id": "e18",
+      "when": "2025",
+      "title": "Revised settlement announced",
+      "description": "States announced a revised $7.4 billion Purdue/Sackler settlement: up to $6.5 billion from the Sackler family and approximately $900 million from Purdue.",
+      "category": "money",
+      "status": "documented",
+      "sources": [
+        "ca_ag"
+      ]
+    },
+    {
+      "id": "e19",
+      "when": "2026-05-01",
+      "title": "Purdue closes; Knoa takes over",
+      "description": "The settlement took effect. Purdue ceased operations and assets transferred to Knoa Pharma, independently overseen, with Sacklers barred from U.S. opioid commerce.",
+      "category": "legal",
+      "status": "documented",
+      "sources": [
+        "ny_ag",
+        "ca_ag"
+      ]
+    },
+    {
+      "id": "e20",
+      "when": "2026-05-01",
+      "title": "Initial settlement payments begin",
+      "description": "California reported more than $1.5 billion paid by Sacklers at implementation, with scheduled subsequent payments. This describes settlement payments, not a full accounting of remaining family assets.",
+      "category": "money",
+      "status": "documented",
+      "sources": [
+        "ca_ag"
+      ]
+    },
+    {
+      "id": "e21",
+      "when": "2026-10-28",
+      "title": "Publicly reported asset-sale dispute",
+      "description": "Reuters reported a bankruptcy judge denied Richard Sackler’s effort to halt a property sale connected to settlement financing. The atlas records the legal dispute, not private residential details.",
+      "category": "wealth",
+      "status": "reported",
+      "sources": [
+        "reuters_2026"
+      ]
+    }
+  ],
+  "people": [
+    {
+      "name": "Arthur M. Sackler",
+      "role": "Psychiatrist, medical advertising entrepreneur",
+      "period": "1913–1987",
+      "note": "Helped develop pharmaceutical promotion. Died before OxyContin launched. His estate exited direct Purdue ownership; the provenance of a later estate payment was disputed.",
+      "sources": [
+        "harvard_report",
+        "propublica"
+      ]
+    },
+    {
+      "name": "Mortimer Sackler",
+      "role": "Purdue family co-owner",
+      "period": "1916–2010",
+      "note": "A member of the ownership branch that retained Purdue after Arthur’s estate sold its stake.",
+      "sources": [
+        "fortune",
+        "propublica"
+      ]
+    },
+    {
+      "name": "Raymond Sackler",
+      "role": "Purdue family co-owner and executive",
+      "period": "1920–2017",
+      "note": "Led Purdue’s pharmaceutical business for decades. His descendants were among later Purdue stakeholders.",
+      "sources": [
+        "fortune",
+        "newyorker"
+      ]
+    },
+    {
+      "name": "Richard Sackler",
+      "role": "Former Purdue president; Raymond’s son",
+      "period": "Public corporate role",
+      "note": "Named in extensive litigation and internal records concerning OxyContin. His 2026 asset-sale litigation was publicly reported. Allegations, admissions and judgments must remain separate.",
+      "sources": [
+        "stat",
+        "reuters_2026"
+      ]
+    },
+    {
+      "name": "Mortimer / Raymond descendants",
+      "role": "Former controlling family shareholders",
+      "period": "Until 2026 restructuring",
+      "note": "Participating family branches settled civil claims and are barred from U.S. opioid sales. No family member had been criminally charged in the cited 2026 reporting.",
+      "sources": [
+        "ca_ag",
+        "reuters_2026"
+      ]
+    },
+    {
+      "name": "Purdue Pharma / Knoa Pharma",
+      "role": "Corporation and successor",
+      "period": "1991–2026 / from May 2026",
+      "note": "Purdue pleaded guilty to federal crimes and closed. Knoa operates under independent oversight with new public-health obligations.",
+      "sources": [
+        "doj_2020",
+        "ny_ag"
+      ]
+    }
+  ],
+  "flows": [
+    {
+      "amount": "~$11B",
+      "label": "2008–2016 family distributions",
+      "detail": "Approximate gross distributions referenced in the Supreme Court opinion; not evidence of identical personal take-home wealth.",
+      "sources": [
+        "scotus"
+      ],
+      "kind": "outflow"
+    },
+    {
+      "amount": "$7.4B",
+      "label": "2026 settlement total",
+      "detail": "Up to $6.5B from family members and about $900M from Purdue, spread across a multi-year distribution structure.",
+      "sources": [
+        "ca_ag"
+      ],
+      "kind": "settlement"
+    },
+    {
+      "amount": ">$1.5B",
+      "label": "Family payments at settlement launch",
+      "detail": "California AG’s report of initial Sackler payments in May 2026. These are not the entire settlement obligation.",
+      "sources": [
+        "ca_ag"
+      ],
+      "kind": "settlement"
+    },
+    {
+      "amount": "$73.1M",
+      "label": "Kentucky additional settlement (2025)",
+      "detail": "Kentucky AG announcement; distinct from the earlier $24M state settlement, and one part of broader state recoveries.",
+      "sources": [
+        "ky_ag"
+      ],
+      "kind": "state"
+    },
+    {
+      "amount": "~$19.65M",
+      "label": "Arthur estate note paid (1997)",
+      "detail": "ProPublica traced an estate-related payment. Whether OxyContin profits specifically financed it was disputed; no inference is made here.",
+      "sources": [
+        "propublica"
+      ],
+      "kind": "qualified"
+    }
+  ]
+}
