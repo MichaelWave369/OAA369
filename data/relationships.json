@@ -1,0 +1,779 @@
+{
+  "version": "0.1.0",
+  "as_of": "2026-11-10",
+  "title": "OAA369 — Sourced Entity Network",
+  "editorial_note": "A link indicates only the specific cited relationship. It does not establish complicity, intent, coordinated wrongdoing, or individual liability. No private address, live whereabouts or individual finance tracking.",
+  "nodes": [
+    {
+      "id": "p_arthur",
+      "label": "Arthur M. Sackler",
+      "short": "Arthur Sackler",
+      "kind": "person",
+      "summary": "Physician and pharmaceutical advertising executive. Died in 1987, before the OxyContin launch."
+    },
+    {
+      "id": "p_mortimer",
+      "label": "Mortimer Sackler",
+      "short": "Mortimer Sackler",
+      "kind": "person",
+      "summary": "One of the three brothers who acquired Purdue Frederick. His family branch later held Purdue interests."
+    },
+    {
+      "id": "p_raymond",
+      "label": "Raymond Sackler",
+      "short": "Raymond Sackler",
+      "kind": "person",
+      "summary": "One of the three brothers who acquired Purdue Frederick. His family branch later held Purdue interests."
+    },
+    {
+      "id": "p_richard",
+      "label": "Richard Sackler",
+      "short": "Richard Sackler",
+      "kind": "person",
+      "summary": "Raymond Sackler’s son and former president of Purdue; a distinct historical role."
+    },
+    {
+      "id": "o_mcadams",
+      "label": "William Douglas McAdams agency",
+      "short": "McAdams Agency",
+      "kind": "organization",
+      "summary": "Pharmaceutical advertising agency where Arthur Sackler worked."
+    },
+    {
+      "id": "o_purdue_f",
+      "label": "Purdue Frederick",
+      "short": "Purdue Frederick",
+      "kind": "company",
+      "summary": "Pre-OxyContin drug business acquired by the Sackler brothers in 1952."
+    },
+    {
+      "id": "o_purdue",
+      "label": "Purdue Pharma",
+      "short": "Purdue Pharma",
+      "kind": "company",
+      "summary": "Manufacturer and marketer of OxyContin; the corporate defendant in opioid proceedings."
+    },
+    {
+      "id": "o_family",
+      "label": "Sackler family interests",
+      "short": "Family interests",
+      "kind": "group",
+      "summary": "Aggregate family ownership/distribution category. Not a claim of identical conduct by every individual."
+    },
+    {
+      "id": "d_oxy",
+      "label": "OxyContin",
+      "short": "OxyContin",
+      "kind": "product",
+      "summary": "FDA-approved prescription medicine containing extended-release oxycodone, launched in 1996."
+    },
+    {
+      "id": "o_fda",
+      "label": "U.S. Food and Drug Administration",
+      "short": "FDA",
+      "kind": "regulator",
+      "summary": "U.S. medicine regulator. Regulatory action is not evidence of shared wrongdoing."
+    },
+    {
+      "id": "o_mckinsey",
+      "label": "McKinsey & Company",
+      "short": "McKinsey",
+      "kind": "company",
+      "summary": "Consulting firm whose historical services to Purdue were subject to a 2024 DOJ resolution."
+    },
+    {
+      "id": "o_doj",
+      "label": "U.S. Department of Justice",
+      "short": "DOJ",
+      "kind": "regulator",
+      "summary": "U.S. federal authority involved in Purdue corporate cases and the McKinsey resolution."
+    },
+    {
+      "id": "l_2007",
+      "label": "2007 federal misbranding plea",
+      "short": "2007 plea",
+      "kind": "case",
+      "summary": "Purdue Frederick corporate guilty plea; certain executives entered separate misdemeanor pleas."
+    },
+    {
+      "id": "l_2020",
+      "label": "2020 Purdue corporate plea",
+      "short": "2020 plea",
+      "kind": "case",
+      "summary": "Purdue corporate guilty plea to federal fraud and kickback conspiracies."
+    },
+    {
+      "id": "l_ky",
+      "label": "Kentucky v. Purdue litigation",
+      "short": "Kentucky case",
+      "kind": "case",
+      "summary": "2007 Kentucky complaint; late-2015 settlement and subsequent document-unsealing litigation."
+    },
+    {
+      "id": "o_ky",
+      "label": "Kentucky Attorney General",
+      "short": "Kentucky AG",
+      "kind": "regulator",
+      "summary": "State legal authority in Kentucky litigation and settlement actions."
+    },
+    {
+      "id": "o_pike",
+      "label": "Pike County court",
+      "short": "Pike County court",
+      "kind": "court",
+      "summary": "Kentucky court where relevant sealed case materials remained."
+    },
+    {
+      "id": "o_stat",
+      "label": "STAT",
+      "short": "STAT",
+      "kind": "publisher",
+      "summary": "Health journalism publication that pursued unsealing Purdue documents in Kentucky."
+    },
+    {
+      "id": "x_kyarchive",
+      "label": "Kentucky litigation archive",
+      "short": "Kentucky archive",
+      "kind": "archive",
+      "summary": "UCSF–Johns Hopkins collection of 281 documents from Kentucky opioid litigation."
+    },
+    {
+      "id": "o_ucsf",
+      "label": "University of California, San Francisco",
+      "short": "UCSF",
+      "kind": "institution",
+      "summary": "Co-maintainer of the opioid industry document archive."
+    },
+    {
+      "id": "o_jhu",
+      "label": "Johns Hopkins University",
+      "short": "Johns Hopkins",
+      "kind": "institution",
+      "summary": "Partner in the opioid industry documents archive."
+    },
+    {
+      "id": "l_bankruptcy",
+      "label": "Purdue Chapter 11 proceedings",
+      "short": "Bankruptcy",
+      "kind": "case",
+      "summary": "Purdue bankruptcy proceedings and related court review, including the 2024 Supreme Court ruling."
+    },
+    {
+      "id": "o_scotus",
+      "label": "U.S. Supreme Court",
+      "short": "Supreme Court",
+      "kind": "court",
+      "summary": "Ruled in 2024 on nonconsensual third-party releases proposed in the Purdue bankruptcy plan."
+    },
+    {
+      "id": "l_settlement",
+      "label": "2025–2026 opioid settlement",
+      "short": "2026 settlement",
+      "kind": "agreement",
+      "summary": "Revised announced $7.4 billion settlement; became effective May 1, 2026."
+    },
+    {
+      "id": "o_ca",
+      "label": "California Attorney General",
+      "short": "California AG",
+      "kind": "regulator",
+      "summary": "Publicly announced settlement terms and implementation details."
+    },
+    {
+      "id": "o_ny",
+      "label": "New York Attorney General",
+      "short": "New York AG",
+      "kind": "regulator",
+      "summary": "Publicly announced Purdue shutdown and Knoa transition."
+    },
+    {
+      "id": "o_knoa",
+      "label": "Knoa Pharma",
+      "short": "Knoa Pharma",
+      "kind": "company",
+      "summary": "Independent successor organization receiving Purdue assets after the 2026 restructuring."
+    },
+    {
+      "id": "o_met",
+      "label": "Metropolitan Museum of Art",
+      "short": "The Met",
+      "kind": "institution",
+      "summary": "Museum that announced removal of Sackler family name from named exhibition spaces in 2021."
+    },
+    {
+      "id": "l_naming",
+      "label": "Sackler naming arrangements",
+      "short": "Naming record",
+      "kind": "record",
+      "summary": "Historic naming arrangements with cultural institutions; not a finding about individual criminal liability."
+    }
+  ],
+  "edges": [
+    {
+      "id": "r01",
+      "source": "p_arthur",
+      "target": "o_mcadams",
+      "relation": "worked at",
+      "when": "1942",
+      "status": "documented",
+      "sources": [
+        "harvard_report"
+      ],
+      "event_ids": [
+        "e02"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r02",
+      "source": "p_arthur",
+      "target": "o_purdue_f",
+      "relation": "co-acquired business",
+      "when": "1952",
+      "status": "documented",
+      "sources": [
+        "harvard",
+        "harvard_report"
+      ],
+      "event_ids": [
+        "e03"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r03",
+      "source": "p_mortimer",
+      "target": "o_purdue_f",
+      "relation": "co-acquired business",
+      "when": "1952",
+      "status": "reported",
+      "sources": [
+        "fortune"
+      ],
+      "event_ids": [
+        "e03"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r04",
+      "source": "p_raymond",
+      "target": "o_purdue_f",
+      "relation": "co-acquired business",
+      "when": "1952",
+      "status": "reported",
+      "sources": [
+        "fortune"
+      ],
+      "event_ids": [
+        "e03"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r05",
+      "source": "o_purdue_f",
+      "target": "o_purdue",
+      "relation": "corporate lineage",
+      "when": "1991",
+      "status": "reported",
+      "sources": [
+        "abc"
+      ],
+      "event_ids": [
+        "e05"
+      ],
+      "note": "The historical businesses and their legal entities are not interchangeable."
+    },
+    {
+      "id": "r06",
+      "source": "p_mortimer",
+      "target": "o_purdue",
+      "relation": "ownership branch",
+      "when": "pre-1996",
+      "status": "reported",
+      "sources": [
+        "fortune",
+        "propublica"
+      ],
+      "event_ids": [
+        "e04"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r07",
+      "source": "p_raymond",
+      "target": "o_purdue",
+      "relation": "ownership branch",
+      "when": "pre-1996",
+      "status": "reported",
+      "sources": [
+        "fortune",
+        "newyorker"
+      ],
+      "event_ids": [
+        "e04"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r08",
+      "source": "p_richard",
+      "target": "o_purdue",
+      "relation": "served as president",
+      "when": "1990s–2000s",
+      "status": "reported",
+      "sources": [
+        "stat",
+        "newyorker"
+      ],
+      "event_ids": [],
+      "note": "Former executive role, not an inference that he personally committed every corporate act."
+    },
+    {
+      "id": "r09",
+      "source": "o_purdue",
+      "target": "d_oxy",
+      "relation": "manufactured and marketed",
+      "when": "1996–2026",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky",
+        "scotus"
+      ],
+      "event_ids": [
+        "e06"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r10",
+      "source": "o_fda",
+      "target": "d_oxy",
+      "relation": "approved for marketing",
+      "when": "1995",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky",
+        "scotus"
+      ],
+      "event_ids": [
+        "e06"
+      ],
+      "note": "Regulatory approval is not a finding that the regulator participated in illegal marketing."
+    },
+    {
+      "id": "r11",
+      "source": "o_purdue_f",
+      "target": "l_2007",
+      "relation": "entered corporate guilty plea",
+      "when": "2007",
+      "status": "admitted",
+      "sources": [
+        "doj_2020",
+        "westvirginia"
+      ],
+      "event_ids": [
+        "e09"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r12",
+      "source": "o_doj",
+      "target": "l_2007",
+      "relation": "federal prosecution",
+      "when": "2007",
+      "status": "documented",
+      "sources": [
+        "doj_2020"
+      ],
+      "event_ids": [
+        "e09"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r13",
+      "source": "o_purdue",
+      "target": "l_2020",
+      "relation": "entered corporate guilty plea",
+      "when": "2020",
+      "status": "admitted",
+      "sources": [
+        "doj_2020"
+      ],
+      "event_ids": [
+        "e15"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r14",
+      "source": "o_doj",
+      "target": "l_2020",
+      "relation": "federal prosecution",
+      "when": "2020",
+      "status": "documented",
+      "sources": [
+        "doj_2020"
+      ],
+      "event_ids": [
+        "e15"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r15",
+      "source": "o_mckinsey",
+      "target": "o_purdue",
+      "relation": "consulted on marketing",
+      "when": "2004–2019",
+      "status": "admitted",
+      "sources": [
+        "doj_2024"
+      ],
+      "event_ids": [
+        "e11"
+      ],
+      "note": "The 2024 resolution addresses consulting work; it does not make every employee a wrongdoer."
+    },
+    {
+      "id": "r16",
+      "source": "o_doj",
+      "target": "o_mckinsey",
+      "relation": "2024 criminal/civil resolution",
+      "when": "2024",
+      "status": "documented",
+      "sources": [
+        "doj_2024"
+      ],
+      "event_ids": [],
+      "note": "$650 million resolution under a deferred prosecution and related civil agreement. The exact terms matter."
+    },
+    {
+      "id": "r17",
+      "source": "o_ky",
+      "target": "l_ky",
+      "relation": "brought state action",
+      "when": "2007",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky"
+      ],
+      "event_ids": [
+        "e08",
+        "e12"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r18",
+      "source": "o_purdue",
+      "target": "l_ky",
+      "relation": "defendant; later settled",
+      "when": "2007–2015",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky",
+        "ky_ag"
+      ],
+      "event_ids": [
+        "e12"
+      ],
+      "note": "A settlement is not itself a finding that all allegations were proved."
+    },
+    {
+      "id": "r19",
+      "source": "o_pike",
+      "target": "l_ky",
+      "relation": "held sealed case records",
+      "when": "2007–2019",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky"
+      ],
+      "event_ids": [
+        "e13"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r20",
+      "source": "o_stat",
+      "target": "l_ky",
+      "relation": "sought unsealing",
+      "when": "2016–2019",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky",
+        "stat"
+      ],
+      "event_ids": [
+        "e13"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r21",
+      "source": "l_ky",
+      "target": "x_kyarchive",
+      "relation": "documents preserved",
+      "when": "2019 onward",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky"
+      ],
+      "event_ids": [
+        "e13"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r22",
+      "source": "o_ucsf",
+      "target": "x_kyarchive",
+      "relation": "archive partner",
+      "when": "2019 onward",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky"
+      ],
+      "event_ids": [
+        "e13"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r23",
+      "source": "o_jhu",
+      "target": "x_kyarchive",
+      "relation": "archive partner",
+      "when": "2019 onward",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky"
+      ],
+      "event_ids": [
+        "e13"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r24",
+      "source": "o_purdue",
+      "target": "l_bankruptcy",
+      "relation": "filed Chapter 11",
+      "when": "2019",
+      "status": "documented",
+      "sources": [
+        "scotus"
+      ],
+      "event_ids": [
+        "e14"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r25",
+      "source": "o_scotus",
+      "target": "l_bankruptcy",
+      "relation": "ruled on proposed releases",
+      "when": "2024",
+      "status": "adjudicated",
+      "sources": [
+        "scotus"
+      ],
+      "event_ids": [
+        "e17"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r26",
+      "source": "o_family",
+      "target": "o_purdue",
+      "relation": "collective ownership interests",
+      "when": "before 2026",
+      "status": "documented",
+      "sources": [
+        "scotus"
+      ],
+      "event_ids": [
+        "e10"
+      ],
+      "note": "Aggregate legal category; does not assign identical conduct or distributions to every family member."
+    },
+    {
+      "id": "r27",
+      "source": "o_purdue",
+      "target": "o_family",
+      "relation": "distributions reported in court",
+      "when": "2008–2016",
+      "status": "documented",
+      "sources": [
+        "scotus"
+      ],
+      "event_ids": [
+        "e10"
+      ],
+      "note": "Approximately $11 billion gross reported in Supreme Court opinion; not an accounting of each individual’s net wealth."
+    },
+    {
+      "id": "r28",
+      "source": "o_purdue",
+      "target": "l_settlement",
+      "relation": "corporate settlement participant",
+      "when": "2025–2026",
+      "status": "documented",
+      "sources": [
+        "ca_ag"
+      ],
+      "event_ids": [
+        "e18",
+        "e19"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r29",
+      "source": "o_family",
+      "target": "l_settlement",
+      "relation": "family payment obligations",
+      "when": "2025–2026",
+      "status": "documented",
+      "sources": [
+        "ca_ag"
+      ],
+      "event_ids": [
+        "e18",
+        "e20"
+      ],
+      "note": "Collective obligations, not a statement about individual net worth."
+    },
+    {
+      "id": "r30",
+      "source": "o_ca",
+      "target": "l_settlement",
+      "relation": "announced terms and payments",
+      "when": "2025–2026",
+      "status": "documented",
+      "sources": [
+        "ca_ag"
+      ],
+      "event_ids": [
+        "e18",
+        "e20"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r31",
+      "source": "o_ny",
+      "target": "l_settlement",
+      "relation": "announced implementation",
+      "when": "2026",
+      "status": "documented",
+      "sources": [
+        "ny_ag"
+      ],
+      "event_ids": [
+        "e19"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r32",
+      "source": "l_settlement",
+      "target": "o_knoa",
+      "relation": "assets moved under restructuring",
+      "when": "2026",
+      "status": "documented",
+      "sources": [
+        "ny_ag",
+        "ca_ag"
+      ],
+      "event_ids": [
+        "e19"
+      ],
+      "note": "Knoa is independently overseen; no continuing Sackler ownership should be inferred."
+    },
+    {
+      "id": "r33",
+      "source": "o_purdue",
+      "target": "o_knoa",
+      "relation": "assets transferred to successor",
+      "when": "2026",
+      "status": "documented",
+      "sources": [
+        "ny_ag"
+      ],
+      "event_ids": [
+        "e19"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r34",
+      "source": "o_met",
+      "target": "l_naming",
+      "relation": "removed family name from galleries",
+      "when": "2021",
+      "status": "documented",
+      "sources": [
+        "met"
+      ],
+      "event_ids": [
+        "e16"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r35",
+      "source": "o_family",
+      "target": "l_naming",
+      "relation": "family naming association",
+      "when": "before 2021",
+      "status": "documented",
+      "sources": [
+        "met"
+      ],
+      "event_ids": [
+        "e16"
+      ],
+      "note": "Institutional naming is not evidence that every family member was involved in opioid marketing."
+    },
+    {
+      "id": "r36",
+      "source": "o_purdue",
+      "target": "o_doj",
+      "relation": "subject of federal corporate proceedings",
+      "when": "2007–2026",
+      "status": "documented",
+      "sources": [
+        "doj_2020"
+      ],
+      "event_ids": [
+        "e09",
+        "e15"
+      ],
+      "note": ""
+    },
+    {
+      "id": "r37",
+      "source": "o_stat",
+      "target": "x_kyarchive",
+      "relation": "unsealed documents contributed",
+      "when": "2019",
+      "status": "documented",
+      "sources": [
+        "ucsf_ky"
+      ],
+      "event_ids": [
+        "e13"
+      ],
+      "note": ""
+    }
+  ]
+}

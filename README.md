@@ -64,3 +64,9 @@ This URL is a *target*, not a guarantee that Pages has been configured or a depl
 Independent project. Not affiliated with the UCSF–Johns Hopkins Opioid Industry Documents Archive, Purdue Pharma, Knoa Pharma, any family discussed, or any state/federal agency. Not legal or medical advice.
 
 MIT license applies to **original code and writing only**, not outside court documents, images, third-party archives, or news articles linked from the research dataset.
+
+## Recursive evidence network (v0.3)
+
+The new **Network** tab provides an interactive, source-labeled entity graph with one-to-three-hop expansion, entity search, per-relationship evidence, a path explainer, and JSON/CSV export. It starts with Purdue Pharma and 29 seeded entities plus 37 narrowly described, source-linked relationships. Clicking a node inspects its links; **Expand from this entity** recovers its next documented branches. Reported relationships can be hidden with a toggle.
+
+The graph is **not** an allegation network: a link shows a precisely described public relationship, not shared motive, wrongdoing, or causal responsibility. Source links are presently source-level; adding precise page/paragraph locators and independent reviews is the next research priority. See [`docs/research-method.md`](docs/research-method.md).
