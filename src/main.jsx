@@ -8,6 +8,8 @@ import {
 } from 'lucide-react';
 import { atlas, categories, filterEvents, sourceUrl, statusDefinitions, timelineCsv } from './data.js';
 import './styles.css';
+import NetworkExplorer from './NetworkExplorer.jsx';
+import { relationshipAtlas } from './network.js';
 
 const SOURCE_COUNT = Object.keys(atlas.sources).length;
 
@@ -52,14 +54,14 @@ function DownloadButton({ filename, content, type = 'text/plain;charset=utf-8', 
 function Nav() {
   const [open, setOpen] = useState(false);
   const links = [
-    ['#timeline', 'Timeline'], ['#people', 'People & power'], ['#money', 'Money'],
+    ['#network', 'Network'], ['#timeline', 'Timeline'], ['#people', 'People & power'], ['#money', 'Money'],
     ['#kentucky', 'Kentucky'], ['#sources', 'Sources'],
   ];
   return <header className="site-header">
     <a className="brand" href="#top" aria-label="OAA369, back to top"><span className="brand-symbol">O<span>·</span>A</span><span className="brand-text">OPIOID<br/>ACCOUNTABILITY<br/><b>ATLAS</b></span></a>
     <button type="button" className="menu-toggle" aria-expanded={open} aria-label={open ? 'Close navigation' : 'Open navigation'} onClick={() => setOpen(!open)}>{open ? <X size={22}/> : <Menu size={22}/>}</button>
     <nav className={open ? 'navigation open' : 'navigation'} aria-label="Main navigation">{links.map(([href, label]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}</nav>
-    <span className="header-meta"><span className="live-dot" /> INDEPENDENT RESEARCH · v0.2</span>
+    <span className="header-meta"><span className="live-dot" /> INDEPENDENT RESEARCH · v0.3</span>
   </header>;
 }
 
@@ -81,7 +83,7 @@ function Hero() {
       <div className="hero-actions"><a href="#timeline" className="button primary">Explore the record <ArrowDownRight size={17}/></a><a href="#method" className="button secondary">Our research method <ArrowRight size={15}/></a></div>
       <p className="hero-dedication">For the communities who lived this history, not just those who wrote it.</p>
     </div><OrbitGraphic /></section>
-    <section className="metrics" aria-label="Atlas coverage"><div className="metric"><strong>{atlas.events.length}</strong><span>Timeline records</span></div><div className="metric"><strong>{SOURCE_COUNT}</strong><span>Evidence sources</span></div><div className="metric"><strong>1910s–2026</strong><span>Historical scope</span></div><div className="metric"><strong>KY</strong><span>Appalachian focus</span></div></section>
+    <section className="metrics" aria-label="Atlas coverage"><div className="metric"><strong>{atlas.events.length}</strong><span>Timeline records</span></div><div className="metric"><strong>{SOURCE_COUNT}</strong><span>Evidence sources</span></div><div className="metric"><strong>1910s–2026</strong><span>Historical scope</span></div><div className="metric"><strong>{relationshipAtlas.nodes.length}</strong><span>Seeded entities</span></div></section>
   </>;
 }
 
@@ -125,7 +127,7 @@ function Timeline() {
   const results = useMemo(() => filterEvents(atlas.events, atlas.sources, { search: query, category, status }), [query, category, status]);
   const filtered = query.trim() || category !== 'all' || status !== 'all';
   return <section id="timeline" className="section timeline-section">
-    <SectionHead index="02" eyebrow="HISTORICAL CHRONOLOGY" title="Every turning point" italic="leaves a trace." description="Search decisions, allegations, admissions and the public record from the beginnings to 2026."/>
+    <SectionHead index="03" eyebrow="HISTORICAL CHRONOLOGY" title="Every turning point" italic="leaves a trace." description="Search decisions, allegations, admissions and the public record from the beginnings to 2026."/>
     <div className="filter-panel"><label className="filter-search"><span>SEARCH THE RECORD</span><div className="input-shell"><Search size={18}/><input type="search" value={query} placeholder="Try Kentucky, 2007, marketing…" onChange={e => setQuery(e.target.value)}/></div></label>
       <label><span>FOCUS</span><div className="select-shell"><select value={category} onChange={e => setCategory(e.target.value)}>{categories.map(([v, label]) => <option key={v} value={v}>{label}</option>)}</select><ChevronDown size={16}/></div></label>
       <label><span>STATUS</span><div className="select-shell"><select value={status} onChange={e => setStatus(e.target.value)}><option value="all">All evidence levels</option>{Object.keys(statusDefinitions).map(v => <option key={v} value={v}>{v[0].toUpperCase()+v.slice(1)}</option>)}</select><ChevronDown size={16}/></div></label>
@@ -145,7 +147,7 @@ const branches = [
 ];
 
 function People() {
-  return <section id="people" className="section people-section"><SectionHead index="03" eyebrow="PEOPLE, POWER & OWNERSHIP" title="A surname is not" italic="a verdict." description="Distinguishing branches, corporate roles, and time periods is essential to accuracy."/>
+  return <section id="people" className="section people-section"><SectionHead index="04" eyebrow="PEOPLE, POWER & OWNERSHIP" title="A surname is not" italic="a verdict." description="Distinguishing branches, corporate roles, and time periods is essential to accuracy."/>
     <div className="family-map"><div className="family-root"><GitBranch size={16}/> THE SACKLER BROTHERS <span>Shared origin · divergent histories</span></div>
       <div className="family-branches">{branches.map(b => <div className={`branch-card ${b.kind}`} key={b.title}><div className="branch-title">{b.title}</div><small>{b.label}</small><p>{b.detail}</p></div>)}</div></div>
     <div className="cards-grid person-grid">{atlas.people.map((p) => <article className="person-card" key={p.name}><div className="person-icon"><Fingerprint size={20}/></div><h3>{p.name}</h3><div className="person-role">{p.role}</div><div className="person-period">{p.period}</div><p>{p.note}</p><EvidenceLinks ids={p.sources} compact/></article>)}</div>
@@ -153,7 +155,7 @@ function People() {
 }
 
 function Money() {
-  return <section id="money" className="section money-section"><SectionHead index="04" eyebrow="PUBLIC FINANCIAL RECORDS" title="Trace the transfers." italic="Keep the context." description="Distributions, settlements and public obligations are not interchangeable with personal net worth."/>
+  return <section id="money" className="section money-section"><SectionHead index="05" eyebrow="PUBLIC FINANCIAL RECORDS" title="Trace the transfers." italic="Keep the context." description="Distributions, settlements and public obligations are not interchangeable with personal net worth."/>
     <div className="money-path"><div><small>BUSINESS</small><b>PURDUE / OXYCONTIN</b><span>Sales and corporate revenue</span></div><ArrowRight size={22}/><div><small>OWNERSHIP</small><b>FAMILY DISTRIBUTIONS</b><span>Documented gross transfers</span></div><ArrowRight size={22}/><div><small>PUBLIC RECORD</small><b>SETTLEMENTS / ASSETS</b><span>Legal obligations and public transactions</span></div></div>
     <div className="cards-grid flow-grid">{atlas.flows.map(f => <article className="flow-card" key={f.label}><div className="flow-amount">{f.amount}</div><h3>{f.label}</h3><p>{f.detail}</p><EvidenceLinks ids={f.sources} compact/></article>)}</div>
     <div className="caution"><div className="caution-symbol">?</div><div><h3>What the public record cannot establish</h3><p>Private account balances, every family member’s spending, or their inner motivations are not directly observable. We track attributed transactions, documented disputes, and the gaps that remain instead of manufacturing certainty.</p></div></div>
@@ -162,7 +164,7 @@ function Money() {
 
 function Kentucky() {
   return <section id="kentucky" className="section kentucky-section"><div className="kentucky-banner"><span><MapPinned size={17}/> EASTERN KENTUCKY</span><span>PIKE COUNTY · OPEN COURT RECORDS</span></div>
-    <div className="kentucky-body"><div><div className="eyebrow small">05 / THE COMMUNITY EVIDENCE TRAIL</div><h2>The story comes <em>home.</em></h2>
+    <div className="kentucky-body"><div><div className="eyebrow small">06 / THE COMMUNITY EVIDENCE TRAIL</div><h2>The story comes <em>home.</em></h2>
       <p>Kentucky sued Purdue in 2007. A $24 million settlement followed in 2015. Records remaining in Pike County were unsealed in 2019 after legal efforts by STAT, opening a view into marketing plans and internal documents.</p>
       <p>UCSF and Johns Hopkins cataloged <strong>281 documents</strong> from the Kentucky litigation. They give researchers a foundation for examining the record without reducing the lives affected to statistics.</p>
       <a className="inline-action" href="https://www.industrydocuments.ucsf.edu/opioids/collections/kentucky-opioid-litigation-documents/" target="_blank" rel="noopener noreferrer">Explore the Kentucky litigation archive <ArrowUpRight size={16}/></a>
@@ -176,7 +178,7 @@ function Sources() {
   const entries = Object.entries(atlas.sources);
   const types = [...new Set(entries.map(([, s]) => s.type))].sort();
   const visible = entries.filter(([, s]) => (type === 'all' || s.type === type) && [s.title, s.publisher, s.type].join(' ').toLocaleLowerCase().includes(search.trim().toLocaleLowerCase()));
-  return <section id="sources" className="section sources-section"><SectionHead index="06" eyebrow="DOCUMENT LIBRARY" title="Receipts, not" italic="rhetoric." description="Start at the source, not the social-media summary. Links open original archives, agencies and reporting."/>
+  return <section id="sources" className="section sources-section"><SectionHead index="07" eyebrow="DOCUMENT LIBRARY" title="Receipts, not" italic="rhetoric." description="Start at the source, not the social-media summary. Links open original archives, agencies and reporting."/>
     <div className="source-controls"><label className="filter-search"><span>SEARCH SOURCES</span><div className="input-shell"><Search size={17}/><input type="search" placeholder="Source title, agency, publication…" value={search} onChange={e => setSearch(e.target.value)}/></div></label>
       <label><span>SOURCE TYPE</span><div className="select-shell"><select value={type} onChange={e => setType(e.target.value)}><option value="all">Every source type</option>{types.map(t => <option key={t} value={t}>{t}</option>)}</select><ChevronDown size={16}/></div></label>
       <DownloadButton filename="oaa369-timeline.csv" content={'\uFEFF' + timelineCsv(atlas.events, atlas.sources)} type="text/csv;charset=utf-8">Export CSV</DownloadButton>
@@ -196,7 +198,7 @@ const researchQueue = [
 ];
 
 function Next() {
-  return <section className="section next-section"><div className="eyebrow small">07 / ACTIVE RESEARCH QUESTIONS</div><h2>The work <em>continues.</em></h2>
+  return <section className="section next-section"><div className="eyebrow small">08 / ACTIVE RESEARCH QUESTIONS</div><h2>The work <em>continues.</em></h2>
     <div className="queue-grid">{researchQueue.map(q => <article key={q.index}><div className="queue-top"><span>{q.index}</span><q.icon size={22}/></div><h3>{q.title}</h3><p>{q.text}</p></article>)}</div>
     <div className="about-strip"><div><LibraryBig size={24}/><span><b>Open record, open method.</b><small>Independent research prototype · MIT-licensed original code · No paid access</small></span></div><a href="https://github.com/MichaelWave369/OAA369" target="_blank" rel="noopener noreferrer">View on GitHub <ArrowUpRight size={16}/></a></div>
   </section>;
@@ -207,7 +209,7 @@ function Footer() {
 }
 
 function App() {
-  return <><a className="skip-link" href="#main">Skip to main content</a><Nav/><main id="main"><Hero/><div className="body-sections"><Method/><Timeline/><People/><Money/><Kentucky/><Sources/><Next/></div></main><Footer/></>;
+  return <><a className="skip-link" href="#main">Skip to main content</a><Nav/><main id="main"><Hero/><div className="body-sections"><Method/><NetworkExplorer/><Timeline/><People/><Money/><Kentucky/><Sources/><Next/></div></main><Footer/></>;
 }
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><App/></React.StrictMode>);

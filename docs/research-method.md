@@ -37,3 +37,26 @@ Follow organizations' public conduct and public court matters, never live person
 - Arthur Sackler died before OxyContin's launch; his heirs' direct and indirect benefit is a contested and nuanced historical question. Preserve both documented estate payment and objections to drawing a funding inference.
 - Motive can be explored through documents and incentives; private intentions are not directly knowable.
 - Prescription opioids have legitimate clinical uses, which is distinct from corporate misconduct and deceptive promotion.
+
+## The relationship network (v0.3)
+
+`data/relationships.json` is a **separate ledger** of stable entity nodes and attributed edges.
+
+A graph edge must include a stable ID, directional `source` and `target` IDs, a narrowly-worded `relation`, a public time or period, a legal/evidentiary `status`, one or more IDs from the canonical source library, and optional linked timeline event IDs. Every link has a plain-language note when ambiguity could lead to guilt by association. Graph traversal treats edges as bidirectional solely for discovery; the underlying relationship and any money movement **retain the original direction**.
+
+A visible route like `A → B → C` does **not** demonstrate that A knew C, that A caused C, or that A and C collaborated. Co-occurrence does not justify creating an edge. A discovery candidate lives in the research backlog until its exact relationship is documented, independently checked and reviewed. Do not extrapolate from co-investment, corporate ownership, donations, lawsuits or geographic proximity to criminal wrongdoing.
+
+Source URLs in the initial graph point to relevant public records or reporting, but often **not to page/paragraph-level evidence**. Source-level references are an explicitly unfinished part of this first release; do not describe them as full claim-level verification. Prioritize adding original documents and exact locators, then independent review. Date fields for broad historical periods should be converted to machine-readable start/end dates when verified.
+
+### Expansion guardrails
+
+- Document direct factual relationships, never a vaguely inferred association.
+- Keep `reported`, `alleged`, `admitted`, `adjudicated`, and `documented` distinct, with each relating to **that edge only**.
+- Separate company guilt from an individual person, and collective family distributions from individual net worth.
+- Do not collect private addresses, personal travel, live locations, private banking, or relatives without material public roles.
+- Keep an audit trail of corrected records and add edge-specific source locators.
+- Use a breadth-first traversal with a finite hop distance and node cap; cycle detection must prevent repeats.
+
+### Future sources
+
+Consulting links to other companies, lobby disclosures, political donations, charities and investment firms are **candidate research areas, not established edges**. Only add actual relationships once public primary documents are inspected, with a dated locator and context. Avoid declaring that any large class of people or companies are linked without a record proving each link.
