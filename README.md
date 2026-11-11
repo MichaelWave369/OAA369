@@ -119,3 +119,10 @@ Users can filter by evidence level, reverse chronology, and copy a citation incl
 An inspected page of the [August 28, 2015 Richard Sackler deposition transcript](https://www.industrydocuments.ucsf.edu/docs/hjdf0232) lists the December 29, 1994 Friedman strategy memo as Exhibit 13 and the April 4, 1995 summary of the March 31 launch-team meeting as Exhibit 24. We attach those references to the corresponding 1994 and 1995 docket entries **only to corroborate their existence, date, type and named participants**. The underlying exhibits were not visually inspected in this upgrade. Their `source_review` stays `index-only` and they contribute **zero** extra verified-original counts.
 
 The new cross-references carry `scope: exhibit-metadata-only`, a fixed source locator, and a link to the inspected primary exhibit index (KY-DOC-012). The UI offers direct navigation between records and CSV exports retain the scope and locator. Integrity tests reject missing cross-reference records, duplicated links and any attempt to mislabel exhibit identification as full-text verification. This research is AI-assisted and not external peer review.
+
+
+## v0.8 · Evidence-chain testimony cross-reference
+
+The Kentucky docket now distinguishes **deposition exhibit metadata** from **witness answers about an exhibit**. Two source-passage-located records were added from Richard Sackler's August 28, 2015 sworn deposition transcript (UCSF archive `hjdf0232`, transcript pp. 103–104 and 174–176). These are *testimony about the 1994 memo and 1995 meeting minutes*; they do not certify inspection of those documents. The original DocumentCloud links continued to block access in this research environment (HTTP 403), so the two original documents retain `index-only` status.
+
+The inspector supports two-way navigation: historical document → corroborating source → historical document, each with an explicit scope label and an outstanding-verification note. The CSV export and citation copying preserve these caveats. No new criminal allegations or attributed downstream health outcomes were added. See [`docs/research-method.md`](docs/research-method.md).

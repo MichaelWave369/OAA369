@@ -1,7 +1,7 @@
 {
-  "version": "0.7.0",
+  "version": "0.8.0",
   "as_of": "2026-11-10",
-  "editorial_note": "Evidence dossier, not a criminal-accusation directory. Primary-source exhibit indexes can corroborate dates and identities of documents without verifying their contents. Indexed-only originals remain uninspected. This is a curated sample, not the complete Kentucky archive.",
+  "editorial_note": "Evidence dossier, not a criminal-accusation directory. Primary-source exhibit indexes can corroborate dates and identities of documents without verifying their contents. Indexed-only originals remain uninspected. This is a curated sample, not the complete Kentucky archive. v0.8 adds testimony-specific cross-references: testimony about a memo is not inspection of the memo itself.",
   "records": [
     {
       "id": "KY-DOC-001",
@@ -31,8 +31,14 @@
           "record_id": "KY-DOC-012",
           "scope": "exhibit-metadata-only",
           "locator": "2015 sworn deposition exhibit index, PDF p. 1: Exhibit 13 identifies a Dec. 29, 1994 memo by Michael Friedman addressed to Mortimer, Raymond and Richard Sackler."
+        },
+        {
+          "record_id": "KY-DOC-013",
+          "scope": "deposition-testimony-only",
+          "locator": "Richard Sackler deposition, Aug. 28, 2015, transcript pp. 103–104 (PDF page 26): questioning about Exhibit 13, its author, recipient list and expectations about FDA launch restrictions. The testimony is not inspection of the memo."
         }
-      ]
+      ],
+      "verification_gap": "Direct page-by-page inspection of the December 29, 1994 memo remains outstanding; the original DocumentCloud link returned 403 in the research environment."
     },
     {
       "id": "KY-DOC-002",
@@ -62,8 +68,14 @@
           "record_id": "KY-DOC-012",
           "scope": "exhibit-metadata-only",
           "locator": "2015 sworn deposition exhibit index, PDF p. 1: Exhibit 24 identifies Apr. 4, 1995 minutes for the Mar. 31, 1995 OxyContin Launch Team meeting."
+        },
+        {
+          "record_id": "KY-DOC-014",
+          "scope": "deposition-testimony-only",
+          "locator": "Richard Sackler deposition, Aug. 28, 2015, transcript pp. 174–176 (PDF page 44): questions about Exhibit 24 and testimony that launch marketing was not intended to be limited to cancer pain. Not inspection of minutes."
         }
-      ]
+      ],
+      "verification_gap": "Direct page-by-page inspection of the April 4, 1995 launch-team minutes remains outstanding; the linked DocumentCloud record returned 403 in the research environment."
     },
     {
       "id": "KY-DOC-003",
@@ -328,6 +340,65 @@
       "reviewer": "OAA369 AI-assisted inspection of PDF page 1 exhibit index; not peer review",
       "correction_history": [],
       "related_edge_ids": []
+    },
+    {
+      "id": "KY-DOC-013",
+      "date": "2015-08-28",
+      "date_precision": "day",
+      "title": "Richard Sackler testimony about the 1994 marketing-strategy memo",
+      "category": "testimony",
+      "record_type": "Sworn deposition transcript (examination of Exhibit 13)",
+      "summary": "In Kentucky litigation testimony, Richard Sackler identified Michael Friedman as head of sales and marketing in 1994 and agreed that the December 1994 memo was directed to Mortimer, Raymond and himself. When questioned about an anticipated FDA restriction to cancer pain, he said that was Friedman’s expectation, not his own. These are statements in a deposition, not independent inspection of the original memorandum.",
+      "claim_status": "documented",
+      "source_review": "locator-checked",
+      "source_id": "ucsf_ky",
+      "source_locator": "UCSF archive ID hjdf0232, Richard Sackler deposition (Aug. 28, 2015), transcript pp. 103–104, PDF page 26, examination of Plaintiff’s Exhibit 13. Source text contains questions as well as answers; distinguish each. Text passage checked; scanned page 26 not independently image-reviewed.",
+      "document_url": "https://download.industrydocuments.ucsf.edu/h/j/d/f/hjdf0232/hjdf0232.pdf",
+      "document_label": "Open archived deposition transcript (PDF)",
+      "archive_url": "https://www.industrydocuments.ucsf.edu/docs/hjdf0232",
+      "archive_id": "hjdf0232",
+      "document_page": 26,
+      "entity_ids": [
+        "p_richard",
+        "p_mortimer",
+        "p_raymond",
+        "o_purdue"
+      ],
+      "caution": "The witness’s answers support the described identity and historical statements. They do not prove that he approved the memo, that the plan was executed as written, or that the original memo’s full contents have been independently checked. Counsel’s questions are not automatically accepted facts.",
+      "reviewed_on": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted deposition text locator check; not peer review",
+      "correction_history": [],
+      "related_edge_ids": [],
+      "verification_gap": "Inspect Exhibit 13 itself, including every page and any attachments, before calling its contents primary-inspected."
+    },
+    {
+      "id": "KY-DOC-014",
+      "date": "2015-08-28",
+      "date_precision": "day",
+      "title": "Richard Sackler testimony about the 1995 launch-team minutes",
+      "category": "testimony",
+      "record_type": "Sworn deposition transcript (examination of Exhibit 24)",
+      "summary": "In his 2015 deposition, Richard Sackler was questioned about April 4, 1995 minutes of a March 31 launch-team meeting. Asked whether the marketing strategy was to avoid limiting OxyContin to cancer pain, he answered affirmatively, and discussed market pressures from generic competition to MS Contin. These are attributed testimony and excerpted readings, not direct examination of the complete minutes.",
+      "claim_status": "documented",
+      "source_review": "locator-checked",
+      "source_id": "ucsf_ky",
+      "source_locator": "UCSF archive ID hjdf0232, Richard Sackler deposition (Aug. 28, 2015), transcript pp. 174–176, PDF page 44, questioning on Plaintiff’s Exhibit 24. The question on p. 174 paraphrases launch strategy; the witness answers on p. 176. Source text checked, but the PDF page image and original minutes were not independently inspected.",
+      "document_url": "https://download.industrydocuments.ucsf.edu/h/j/d/f/hjdf0232/hjdf0232.pdf",
+      "document_label": "Open archived deposition transcript (PDF)",
+      "archive_url": "https://www.industrydocuments.ucsf.edu/docs/hjdf0232",
+      "archive_id": "hjdf0232",
+      "document_page": 44,
+      "entity_ids": [
+        "p_richard",
+        "o_purdue",
+        "d_oxy"
+      ],
+      "caution": "Deposition testimony is evidence of what the witness said; a lawyer’s reading of a document does not replace inspection of the entire original. It does not on its own establish specific patient harm or criminal liability.",
+      "reviewed_on": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted deposition text locator check; not peer review",
+      "correction_history": [],
+      "related_edge_ids": [],
+      "verification_gap": "Review the original Exhibit 24 minutes, especially surrounding context, intended audiences, and dates, before any direct-memo-content certification."
     }
   ]
 }

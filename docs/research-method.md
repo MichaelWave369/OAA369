@@ -94,3 +94,12 @@ All tiers are *source-audit states*, not guilt categories. A document can faithf
 ## v0.7: corroboration without over-claiming
 
 An index of numbered exhibits in a sworn transcript can corroborate that a document was identified in litigation with a given date, description, author, and recipients. **It does not verify all assertions inside the underlying exhibit.** `corroborating_records` only accepts `exhibit-metadata-only` and must link to a separately inspected original index with a precise locator. The indexed target remains `index-only`; review state never automatically inherits across a cross-reference. A researcher must inspect the underlying source before promoting that underlying document to `primary-inspected`. The August 2015 transcript (UCSF `hjdf0232`) is an archive source, not a court holding that the marketing was unlawful.
+
+
+### v0.8: bounded source-cross-reference scopes
+
+- `exhibit-metadata-only`: an inspected exhibit index confirms a document's listed identity, date, author, or topic, not its contents.
+- `deposition-testimony-only`: a located passage in sworn testimony is evidence of a deponent's answer and a lawyer's question (which are distinct); it does **not** replace inspection of the complete underlying original document.
+- A target record's review status must match the scope; a cross-reference never promotes the original's `index-only` label or creates a graph edge.
+- `verification_gap` is a published statement of what remains unknown or unexamined. Preserve it in copied citations and CSV exports.
+- Because transcript PDF scan pages 26 and 44 could be text-located but not image-reviewed in the research environment, those records are labeled `locator-checked`, **not** `primary-inspected`. Do not claim complete transcript or exhibit verification.
