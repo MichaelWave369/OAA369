@@ -62,7 +62,7 @@ function Nav() {
     <a className="brand" href="#top" aria-label="OAA369, back to top"><span className="brand-symbol">O<span>·</span>A</span><span className="brand-text">OPIOID<br/>ACCOUNTABILITY<br/><b>ATLAS</b></span></a>
     <button type="button" className="menu-toggle" aria-expanded={open} aria-label={open ? 'Close navigation' : 'Open navigation'} onClick={() => setOpen(!open)}>{open ? <X size={22}/> : <Menu size={22}/>}</button>
     <nav className={open ? 'navigation open' : 'navigation'} aria-label="Main navigation">{links.map(([href, label]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}</nav>
-    <span className="header-meta"><span className="live-dot" /> INDEPENDENT RESEARCH · v0.6</span>
+    <span className="header-meta"><span className="live-dot" /> INDEPENDENT RESEARCH · v0.7</span>
   </header>;
 }
 
