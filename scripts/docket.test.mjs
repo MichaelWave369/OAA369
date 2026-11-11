@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { kentuckyDocket, docketReviewLabels, safeDocketUrl, docketSummary, filterDocket, docketCsv, docketCitation, validateDocketProvenance, corroboratingRecords } from '../src/docket.js';
+import { kentuckyDocket, docketReviewLabels, safeDocketUrl, docketSummary, filterDocket, docketCsv, docketCitation, validateDocketProvenance, corroboratingRecords, supportingDocuments } from '../src/docket.js';
 import { atlas } from '../src/data.js';
 import { relationshipAtlas } from '../src/network.js';
 import { readFileSync } from 'node:fs';
@@ -10,9 +10,9 @@ const indexNodes=new Map(g.nodes.map(n=>[n.id,n]));
 const indexEdges=new Map(g.edges.map(e=>[e.id,e]));
 
 test('Kentucky dossier includes a structured sample, without pretending it is the full archive',()=>{
-  assert.equal(kentuckyDocket.version,'0.7.0');
-  assert.equal(records.length,12);
-  assert.deepEqual(docketSummary(),{total:12,checked:5,primary:2,awaiting:7,categories:7});
+  assert.equal(kentuckyDocket.version,'0.8.0');
+  assert.equal(records.length,14);
+  assert.deepEqual(docketSummary(),{total:14,checked:7,primary:2,awaiting:7,categories:7});
   assert.match(kentuckyDocket.editorial_note,/not a criminal-accusation/);
 });
 
@@ -41,7 +41,7 @@ test('secondary indexes are not marked directly checked or assigned invented rev
   assert.equal(indexed.length,7);
   assert.ok(indexed.every(r=>r.reviewed_on===null && r.reviewer===null));
   const checked=records.filter(r=>r.source_review==='locator-checked');
-  assert.equal(checked.length,3);
+  assert.equal(checked.length,5);
   assert.ok(checked.every(r=>r.reviewed_on==='2026-11-10' && r.reviewer.includes('not peer review')));
 });
 
@@ -59,7 +59,7 @@ test('docket filters are case-insensitive, conjunctive, non-mutating and chronol
   assert.ok(q.length>0 && q.every(r=>r.category==='marketing'&&r.source_review==='index-only'));
   assert.deepEqual(records,clone);
   assert.equal(filterDocket(records,{category:'absent'}).length,0);
-  const all=filterDocket();assert.equal(all.length,12);
+  const all=filterDocket();assert.equal(all.length,14);
   assert.ok(all.every((r,i)=>i===0||all[i-1].date<=r.date));
 });
 
@@ -91,7 +91,7 @@ test('GAO-linked graph records are specific, limited and pinpoint-source reviewe
 
 test('export contains clear review states and source URL but no unsourced motive or location fields',()=>{
   const csv=docketCsv();
-  assert.equal(csv.split('\r\n').length,13);
+  assert.equal(csv.split('\r\n').length,15);
   assert.ok(csv.includes('Source review')&&csv.includes('Original review pending')===false);
   assert.ok(csv.includes('index-only'));
   assert.ok(csv.includes('https://www.documentcloud.org/'));
@@ -162,10 +162,10 @@ test('the 1994 memo and 1995 minutes stay index-only even after exhibit index co
    assert.equal(r.source_review,'index-only');
    assert.equal(r.reviewed_on,null);
    const refs=corroboratingRecords(r);
-   assert.equal(refs.length,1);
+   assert.equal(refs.length,2);
    assert.equal(refs[0].record.id,'KY-DOC-012');
    assert.equal(refs[0].scope,'exhibit-metadata-only');
-   assert.match(docketCitation(r),/not underlying document contents/);
+   assert.match(docketCitation(r),/do not certify the original memo or minutes/);
  }
 });
 
@@ -184,6 +184,61 @@ test('docket exporter and React inspector preserve cross-reference and review li
  assert.match(csv,/Corroborating record IDs/);
  assert.match(csv,/exhibit-metadata-only/);
  const jsx=readFileSync(new URL('../src/KentuckyDocket.jsx',import.meta.url),'utf8');
- assert.match(jsx,/Independently checked exhibit identification/);
+ assert.match(jsx,/Trace the evidence trail/);
  assert.match(jsx,/onSelect\(ref.record_id\)/);
+});
+
+
+test('deposition-text records are identified and never falsely promoted to inspected image',()=>{
+ for(const [id,needle,page] of [['KY-DOC-013','103–104',26],['KY-DOC-014','174–176',44]]){
+  const record=records.find(r=>r.id===id);
+  assert.equal(record.source_review,'locator-checked');
+  assert.equal(record.document_page,page);
+  assert.equal(record.archive_id,'hjdf0232');
+  assert.equal(record.claim_status,'documented');
+  assert.match(record.source_locator,new RegExp(needle));
+  assert.match(record.source_locator,/not independently/);
+  assert.match(record.caution,/not/);
+  assert.equal(validateDocketProvenance(record),null);
+  assert.match(docketCitation(record),/source passage located/);
+  assert.doesNotMatch(docketCitation(record),/original scanned page inspected/);
+ }
+});
+
+test('1994 and 1995 original documents remain unreviewed despite corroboration',()=>{
+ for(const [id,depId] of [['KY-DOC-001','KY-DOC-013'],['KY-DOC-002','KY-DOC-014']]){
+  const r=records.find(r=>r.id===id);
+  assert.equal(r.source_review,'index-only');
+  assert.equal(r.corroborating_records.length,2);
+  const testimony=r.corroborating_records.find(c=>c.record_id===depId);
+  assert.equal(testimony.scope,'deposition-testimony-only');
+  assert.match(r.verification_gap,/Direct page-by-page inspection/);
+  assert.equal(supportingDocuments(depId).length,1);
+  assert.equal(supportingDocuments(depId)[0].id,id);
+  assert.match(docketCitation(r),/Outstanding verification/);
+ }
+});
+
+test('cross-reference validation enforces meaningful source scope and no unjustified review promotion',()=>{
+ const r=records.find(r=>r.id==='KY-DOC-001');
+ const entries=r.corroborating_records;
+ for(const broken of [
+   entries.map(c=>({...c,scope:'full-memo-inspected'})),
+   [{...entries[0],scope:'deposition-testimony-only'}],
+   [{...entries[1],scope:'exhibit-metadata-only'}],
+   [...entries,entries[1]],
+   [{...entries[1],record_id:'KY-DOC-014',locator:'short'}]
+ ]) assert.match(validateDocketProvenance({...r,corroborating_records:broken}),/corroboration/);
+ assert.match(validateDocketProvenance({...r,verification_gap:'short'}),/verification gap/);
+});
+
+test('citation and exports show scope and outstanding gap without implying guilt',()=>{
+ const csv=docketCsv();
+ assert.match(csv,/Outstanding verification gap/);
+ assert.match(csv,/deposition-testimony-only/);
+ assert.match(csv,/Exhibit identification/);
+ const jsx=readFileSync(new URL('../src/KentuckyDocket.jsx',import.meta.url),'utf8');
+ assert.match(jsx,/Witness testimony about document/);
+ assert.match(jsx,/Follow back to underlying documents/);
+ assert.match(jsx,/What we still need to verify/);
 });

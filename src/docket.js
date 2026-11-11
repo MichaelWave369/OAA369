@@ -29,9 +29,9 @@ export function filterDocket(records = kentuckyDocket.records, { query='', categ
     .sort((a,b) => (sort === 'newest' ? -1 : 1) * (a.date.localeCompare(b.date) || a.id.localeCompare(b.id))); 
 }
 export function docketCsv(records = kentuckyDocket.records) {
-  const head=['Record ID','Period (sort date)','Date precision','Title','Document class','Category','Claim classification','Source review','Source ID','Source locator','Linked document','Connected entity IDs','Editorial caution','Original archive ID','Original PDF page','Archive catalog URL','Reviewed on','Reviewer','Corroborating record IDs','Corroboration scope and locator'];
+  const head=['Record ID','Period (sort date)','Date precision','Title','Document class','Category','Claim classification','Source review','Source ID','Source locator','Linked document','Connected entity IDs','Editorial caution','Original archive ID','Original PDF page','Archive catalog URL','Reviewed on','Reviewer','Corroborating record IDs','Corroboration scope and locator','Outstanding verification gap'];
   const rows=records.map(r => [r.id,r.date,r.date_precision,r.title,r.record_type,r.category,r.claim_status,r.source_review,r.source_id,
-    r.source_locator,r.document_url,r.entity_ids.join('; '),r.caution,r.archive_id||'',r.document_page||'',r.archive_url||'',r.reviewed_on||'',r.reviewer||'',(r.corroborating_records||[]).map(c=>c.record_id).join('; '),(r.corroborating_records||[]).map(c=>`${c.scope}: ${c.locator}`).join('; ')]);
+    r.source_locator,r.document_url,r.entity_ids.join('; '),r.caution,r.archive_id||'',r.document_page||'',r.archive_url||'',r.reviewed_on||'',r.reviewer||'',(r.corroborating_records||[]).map(c=>c.record_id).join('; '),(r.corroborating_records||[]).map(c=>`${c.scope}: ${c.locator}`).join('; '),r.verification_gap||'']);
   return [head,...rows].map(row => row.map(toCsvCell).join(',')).join('\r\n');
 }
 
@@ -41,13 +41,17 @@ export function corroboratingRecords(r, records = kentuckyDocket.records) {
   return (r.corroborating_records || []).map(ref => ({...ref, record:byId.get(ref.record_id)})).filter(ref => ref.record);
 }
 
+export function supportingDocuments(recordId, records = kentuckyDocket.records) {
+  return records.filter(r => (r.corroborating_records || []).some(ref => ref.record_id === recordId));
+}
+
 export function docketCitation(r) {
   const review = r.source_review === 'primary-inspected' ? 'original scanned page inspected (AI-assisted; not peer reviewed)'
     : r.source_review === 'locator-checked' ? 'source passage located (AI-assisted; not peer reviewed)'
     : 'secondary index only; original not independently examined';
   const artifact = r.archive_id ? `UCSF ID ${r.archive_id}${r.document_page ? `, PDF p. ${r.document_page}` : ''}` : r.source_id;
-  const crossRef = (r.corroborating_records || []).length ? ` Corroboration is limited to exhibit identification, not underlying document contents: ${(r.corroborating_records || []).map(c => `${c.record_id} (${c.locator})`).join('; ')}.` : '';
-  return `OAA369 ${r.id}. ${r.title}. ${r.date_precision === 'day' ? r.date : r.date_precision === 'month' ? r.date.slice(0,7) : r.date.slice(0,4)} (${r.date_precision} precision). ${artifact}. ${r.source_locator} [${review}]. ${r.document_url}${crossRef}`;
+  const crossRef = (r.corroborating_records || []).length ? ` Cross-references are bounded by their individual scope; they do not certify the original memo or minutes: ${(r.corroborating_records || []).map(c => `${c.record_id} [${c.scope}] (${c.locator})`).join('; ')}.` : '';
+  return `OAA369 ${r.id}. ${r.title}. ${r.date_precision === 'day' ? r.date : r.date_precision === 'month' ? r.date.slice(0,7) : r.date.slice(0,4)} (${r.date_precision} precision). ${artifact}. ${r.source_locator} [${review}]. ${r.document_url}${crossRef}${r.verification_gap ? ` Outstanding verification: ${r.verification_gap}` : ''}`;
 }
 
 export function validateDocketProvenance(r) {
@@ -58,10 +62,13 @@ export function validateDocketProvenance(r) {
     if (!Array.isArray(r.corroborating_records)) return 'Invalid corroboration list';
     const seen = new Set();
     for (const ref of r.corroborating_records) {
-      if (ref.scope !== 'exhibit-metadata-only' || !ref.record_id || ref.record_id === r.id || seen.has(ref.record_id) || !kentuckyDocket.records.some(candidate => candidate.id === ref.record_id && candidate.source_review === 'primary-inspected') || typeof ref.locator !== 'string' || ref.locator.length < 35) return 'Invalid or overstated corroboration';
+      const target = kentuckyDocket.records.find(candidate => candidate.id === ref.record_id);
+      const permitted = ref.scope === 'exhibit-metadata-only' && target?.source_review === 'primary-inspected' || ref.scope === 'deposition-testimony-only' && target?.source_review === 'locator-checked' && target?.record_type.startsWith('Sworn deposition');
+      if (!permitted || ref.record_id === r.id || seen.has(ref.record_id) || typeof ref.locator !== 'string' || ref.locator.length < 60) return 'Invalid or overstated corroboration';
       seen.add(ref.record_id);
     }
   }
+  if (r.verification_gap !== undefined && (typeof r.verification_gap !== 'string' || r.verification_gap.length < 40)) return 'Invalid verification gap';
   if (r.source_review === 'primary-inspected' && (!r.archive_id || !Number.isInteger(r.document_page) || r.document_page < 1 || !safeDocketUrl(r.archive_url) || !r.reviewed_on || !r.reviewer?.includes('not peer review'))) return 'Primary review lacks specific inspected artifact metadata';
   if (r.source_review === 'locator-checked' && (!r.source_locator || !r.reviewed_on || !r.reviewer?.includes('not peer review'))) return 'Locator review lacks audit details';
   return null;
