@@ -1,7 +1,7 @@
 {
-  "version": "0.5.0",
+  "version": "0.6.0",
   "as_of": "2026-11-10",
-  "editorial_note": "Research index, not a criminal-accusation directory. Indexed-only documents have not been independently inspected.",
+  "editorial_note": "Evidence docket, not a criminal-accusation directory. Review status distinguishes independent original-image inspection, secondary/government-source locator checks, and reporter/collection indexes. This seed is not the entire 281-document archive.",
   "records": [
     {
       "id": "KY-DOC-001",
@@ -256,6 +256,34 @@
       "date_precision": "day",
       "reviewed_on": "2026-11-10",
       "reviewer": "OAA369 AI-assisted source passage check; not peer review",
+      "correction_history": [],
+      "related_edge_ids": []
+    },
+    {
+      "id": "KY-DOC-011",
+      "date": "1999-05-30",
+      "date_precision": "day",
+      "title": "Richard Sackler email on OxyContin growth and pain specialists",
+      "category": "marketing",
+      "record_type": "Internal email preserved as deposition exhibit",
+      "summary": "An archived May 30, 1999 email from Richard Sackler to Cornelia Hentzsch about proposed office space includes his expressed commitment to OxyContin’s commercial success and discussion of relationships with pain specialists and a possible gala invitation. It is an author statement in an email, not proof of any inducement or misconduct by the clinicians mentioned.",
+      "claim_status": "documented",
+      "source_review": "primary-inspected",
+      "source_id": "ucsf_ky",
+      "source_locator": "UCSF archive document frcf0232, downloadable PDF page 1 (displayed exhibit page 89; Bates PDD9570163). Email within chain dated May 30, 1999, under subject “RE: New office”; paragraph starting “You won’t believe how committed...” and subsequent gala discussion.",
+      "document_url": "https://download.industrydocuments.ucsf.edu/f/r/c/f/frcf0232/frcf0232.pdf",
+      "archive_url": "https://www.industrydocuments.ucsf.edu/docs/frcf0232",
+      "archive_id": "frcf0232",
+      "document_page": 1,
+      "document_label": "Read original scanned email (UCSF PDF)",
+      "entity_ids": [
+        "p_richard",
+        "o_purdue",
+        "d_oxy"
+      ],
+      "caution": "The correspondence contains Richard Sackler’s own characterization of business relationships. It neither verifies a financial arrangement with named clinicians nor establishes any crime, causal health outcome, or personal motivation beyond the statement itself.",
+      "reviewed_on": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted original PDF page/image inspection; not peer review",
       "correction_history": [],
       "related_edge_ids": []
     }

@@ -65,7 +65,7 @@ Independent project. Not affiliated with the UCSF–Johns Hopkins Opioid Industr
 
 MIT license applies to **original code and writing only**, not outside court documents, images, third-party archives, or news articles linked from the research dataset.
 
-## Recursive evidence network (v0.5)
+## Recursive evidence network (v0.6)
 
 The new **Network** tab provides an interactive, source-labeled entity graph with one-to-three-hop expansion, entity search, per-relationship evidence, a path explainer, and JSON/CSV export. It starts with Purdue Pharma and **35 seeded entities plus 46 attributed relationships**, including the 2003 GAO investigation and the Knoa Foundation. A link to a relevant source is not the same as a verified pinpoint citation. Clicking a node inspects its links; **Expand from this entity** recovers its next documented branches. Reported relationships can be hidden with a toggle.
 
@@ -91,7 +91,7 @@ The validator requires an exact locator, existing reviewed entity identities, re
 - [UCSF–JHU Kentucky documents archive](https://www.industrydocuments.ucsf.edu/opioids/collections/kentucky-opioid-litigation-documents/): Kentucky litigation background and the 281-document collection.
 
 
-## Kentucky source docket (v0.5)
+## Kentucky source docket (v0.6)
 
 The new **Docket** section is a searchable, inspectable index of public Kentucky litigation documents and government reports. Data lives in `data/kentucky-docket.json` and is exportable as JSON or CSV.
 
@@ -104,3 +104,12 @@ The new **Docket** section is a searchable, inspectable index of public Kentucky
 The 2003 GAO report also supports narrowly described new links to Abbott Laboratories (1996 co-promotion), IMS Health (prescribing data), DEA (attributed oversight concerns) and FDA (advertising citations). These are **specific commercial and regulatory relationships**, not an allegation of conspiratorial conduct by all parties.
 
 To validate locally: `npm run check`. The static site remains open-source and requires no server-side account or subscription.
+
+
+## v0.6 provenance inspector
+
+The Kentucky docket now distinguishes three separate audit states: `index-only` (reporter or archive index, **original not inspected**), `locator-checked` (source passage located in a government/report source), and `primary-inspected` (actual original document page visually examined with an archive ID, PDF page and a review date). All checks are AI-assisted, not independent peer review. Do not promote a record merely because its link works.
+
+A directly inspected May 30, 1999 archived email (UCSF `frcf0232`, PDF p. 1, exhibit p. 89, Bates PDD9570163) is included as `KY-DOC-011`. It establishes what that email says, not a financial arrangement or illegal act by anybody. The seven older entries still awaiting direct original review remain in the queue.
+
+Users can filter by evidence level, reverse chronology, and copy a citation including review status and original link. New data must pass automated provenance checks; verified state requires page-level locator and review metadata.

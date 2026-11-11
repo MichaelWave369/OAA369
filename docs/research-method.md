@@ -81,3 +81,12 @@ Consulting links to other companies, lobby disclosures, political donations, cha
 Every docket entry keeps a precise source index location, date precision, public entity IDs, claim classification, a caution about overinterpretation, any corresponding verified graph edge IDs, and a review status. Preserve corrections as append-only log entries. A witness affidavit is testimony, not a court ruling; a legal complaint contains allegations, not findings; a source-linked partnership does not establish misconduct.
 
 The short research pass documents the following official GAO report sections for the initial verified excerpts: marketing and promotion / co-promotion, DEA concerns in the summary, FDA citations of ads, and the section on IMS Health physician-prescribing reports. The accessible HTML report is available at `https://www.gao.gov/assets/a240885.html`.
+
+
+## Evidence provenance tier (v0.6)
+
+- `index-only`: indexed by a journalist/archive; no claim of firsthand inspection, no invented review author/date/page.
+- `locator-checked`: specific report section found and checked, without claiming the underlying original was independently inspected.
+- `primary-inspected`: an actual original document image/PDF page was visually inspected. Document ID, PDF page, date, review date, independent link to archive catalog, and interpretation caveat are required.
+
+All tiers are *source-audit states*, not guilt categories. A document can faithfully show that a person **said** something without proving the statement's truth or any downstream causation. Copy-ready citations preserve these distinctions. Source checks here were AI-assisted; neither peer review nor full forensic authentication is implied.
