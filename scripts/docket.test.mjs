@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { kentuckyDocket, docketReviewLabels, safeDocketUrl, docketSummary, filterDocket, docketCsv } from '../src/docket.js';
+import { kentuckyDocket, docketReviewLabels, safeDocketUrl, docketSummary, filterDocket, docketCsv, docketCitation, validateDocketProvenance } from '../src/docket.js';
 import { atlas } from '../src/data.js';
 import { relationshipAtlas } from '../src/network.js';
 import { readFileSync } from 'node:fs';
@@ -10,9 +10,9 @@ const indexNodes=new Map(g.nodes.map(n=>[n.id,n]));
 const indexEdges=new Map(g.edges.map(e=>[e.id,e]));
 
 test('Kentucky dossier includes a structured sample, without pretending it is the full archive',()=>{
-  assert.equal(kentuckyDocket.version,'0.5.0');
-  assert.equal(records.length,10);
-  assert.deepEqual(docketSummary(),{total:10,checked:3,awaiting:7,categories:7});
+  assert.equal(kentuckyDocket.version,'0.6.0');
+  assert.equal(records.length,11);
+  assert.deepEqual(docketSummary(),{total:11,checked:4,primary:1,awaiting:7,categories:7});
   assert.match(kentuckyDocket.editorial_note,/not a criminal-accusation/);
 });
 
@@ -59,7 +59,7 @@ test('docket filters are case-insensitive, conjunctive, non-mutating and chronol
   assert.ok(q.length>0 && q.every(r=>r.category==='marketing'&&r.source_review==='index-only'));
   assert.deepEqual(records,clone);
   assert.equal(filterDocket(records,{category:'absent'}).length,0);
-  const all=filterDocket();assert.equal(all.length,10);
+  const all=filterDocket();assert.equal(all.length,11);
   assert.ok(all.every((r,i)=>i===0||all[i-1].date<=r.date));
 });
 
@@ -91,7 +91,7 @@ test('GAO-linked graph records are specific, limited and pinpoint-source reviewe
 
 test('export contains clear review states and source URL but no unsourced motive or location fields',()=>{
   const csv=docketCsv();
-  assert.equal(csv.split('\r\n').length,11);
+  assert.equal(csv.split('\r\n').length,12);
   assert.ok(csv.includes('Source review')&&csv.includes('Original review pending')===false);
   assert.ok(csv.includes('index-only'));
   assert.ok(csv.includes('https://www.documentcloud.org/'));
@@ -106,4 +106,41 @@ test('React docket surface and network focus handler are wired into the applicat
   assert.match(root,/#docket/);
   assert.match(docket,/oaa:focus-entity/);
   assert.match(network,/addEventListener\('oaa:focus-entity'/);
+});
+
+
+test('first original-page-inspected record has full provenance and a bounded assertion',()=>{
+ const r=records.find(r=>r.id==='KY-DOC-011');
+ assert.equal(r.source_review,'primary-inspected');
+ assert.equal(r.archive_id,'frcf0232');
+ assert.equal(r.document_page,1);
+ assert.match(r.summary,/An archived May 30/);
+ assert.match(r.caution,/neither verifies/);
+ assert.equal(validateDocketProvenance(r),null);
+ assert.match(docketCitation(r),/original scanned page inspected/);
+ assert.match(docketCitation(r),/UCSF ID frcf0232, PDF p\. 1/);
+});
+
+test('review gate rejects unsupported primary-review promotions and unsafe URLs',()=>{
+ for(const r of records) assert.equal(validateDocketProvenance(r),null,r.id);
+ const orig=records.find(r=>r.id==='KY-DOC-011');
+ assert.match(validateDocketProvenance({...orig,document_page:null}),/Primary review/);
+ assert.match(validateDocketProvenance({...orig,archive_url:'https://evil.example/'}),/Primary review/);
+ const indexed=records.find(r=>r.source_review==='index-only');
+ assert.match(validateDocketProvenance({...indexed,reviewed_on:'2026-11-10'}),/Unreviewed/);
+ assert.equal(safeDocketUrl('https://download.industrydocuments.ucsf.edu/f/r/c/f/frcf0232/frcf0232.pdf')!==null,true);
+});
+
+test('newest sorting keeps deterministic reverse chronological order',()=>{
+ const view=filterDocket(records,{sort:'newest'});
+ assert.equal(view[0].id,'KY-DOC-010');
+ assert.equal(view[view.length-1].id,'KY-DOC-001');
+ assert.deepEqual(filterDocket(records,{review:'primary-inspected'}).map(x=>x.id),['KY-DOC-011']);
+});
+
+test('export includes archival provenance with no synthetic page for indexed records',()=>{
+ const csv=docketCsv(records);
+ assert.match(csv,/Original archive ID/);
+ assert.match(csv,/frcf0232/);
+ assert.match(docketCitation(records[0]),/secondary index only/);
 });
