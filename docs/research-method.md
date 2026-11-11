@@ -103,3 +103,11 @@ An index of numbered exhibits in a sworn transcript can corroborate that a docum
 - A target record's review status must match the scope; a cross-reference never promotes the original's `index-only` label or creates a graph edge.
 - `verification_gap` is a published statement of what remains unknown or unexamined. Preserve it in copied citations and CSV exports.
 - Because transcript PDF scan pages 26 and 44 could be text-located but not image-reviewed in the research environment, those records are labeled `locator-checked`, **not** `primary-inspected`. Do not claim complete transcript or exhibit verification.
+
+## v0.9 bounded claim-review gate
+
+`data/claims.json` maps each discrete statement to a stable docket record. Claims include a narrowly framed `establishes` description and a mandatory `does_not_establish` interpretation boundary. Evidence-audit state is derived dynamically from the docket rather than copied into a claim. We do not represent an exhibit index as an examination of the underlying exhibit. Links to other records signal places to check, not a chain of proof.
+
+The January 25, 1999 sales-bonus bulletin has been identified in Richard Sackler’s 2015 deposition (Exhibit 40, transcript p. 6, PDF p. 2 of UCSF ID `hjdf0232`), but the 1999 original remains an uninspected indexed record (`KY-DOC-004`). Existence and labeling are verified, payout terms and outcomes are not.
+
+For a new claim: (1) identify source document and document class; (2) record the exact locator; (3) describe what it establishes; (4) describe what cannot be inferred; (5) tag whether the original, a passage, or only a secondary index was examined; (6) maintain correction history and reviewer notes. A graph link is not a finding of causality, conspiracy, or wrongdoing.

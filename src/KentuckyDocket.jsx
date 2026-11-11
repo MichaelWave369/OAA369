@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { ArrowRight, ArrowUpRight, BookMarked, CalendarClock, Download, ExternalLink, FileCheck2, Copy, Check,
   FileClock, FileText, Filter, Link2, MapPin, Search, ShieldCheck, Waypoints } from 'lucide-react';
 import { atlas } from './data.js';
@@ -75,6 +75,15 @@ function Inspector({record,onSelect}) {
 export default function KentuckyDocket() {
   const [query,setQuery]=useState(''); const [category,setCategory]=useState('all'); const [review,setReview]=useState('all'); const [sort,setSort]=useState('oldest');
   const [selectedId,setSelectedId]=useState(kentuckyDocket.records[0]?.id||null);
+  useEffect(()=>{
+    function onFocus(event){
+      const id=event.detail?.id;
+      if(!kentuckyDocket.records.some(record=>record.id===id)) return;
+      setQuery('');setCategory('all');setReview('all');setSelectedId(id);
+    }
+    window.addEventListener('oaa:focus-docket',onFocus);
+    return ()=>window.removeEventListener('oaa:focus-docket',onFocus);
+  },[]);
   const summary=docketSummary();
   const filtered=useMemo(()=>filterDocket(kentuckyDocket.records,{query,category,review,sort}),[query,category,review,sort]);
   const record=filtered.find(r=>r.id===selectedId)||filtered[0]||null;

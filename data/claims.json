@@ -1,0 +1,154 @@
+{
+  "version": "0.9.0",
+  "as_of": "2026-11-10",
+  "editorial_note": "Hand-curated bounded claim register. The linked docket record is the evidence source of truth. Exhibit lists, sworn testimony and reporter summaries must not be relabeled as direct review of an underlying document. A claim does not imply guilt or causation.",
+  "claims": [
+    {
+      "claim_id": "CLM-001",
+      "statement": "The 2015 deposition index identifies a December 29, 1994 product-pipeline strategy memo from Michael Friedman addressed to Mortimer, Raymond, and Richard Sackler.",
+      "docket_id": "KY-DOC-012",
+      "related_docket_ids": [
+        "KY-DOC-001"
+      ],
+      "scope": "exhibit-identification",
+      "claim_status": "documented",
+      "establishes": "Exhibit No. 13 on the visually inspected 2015 deposition exhibit index identifies a dated memo and named sender/recipients.",
+      "does_not_establish": "It does not establish the accuracy of the memo’s statements, the recipients’ approval, whether proposals were implemented, or any criminal liability.",
+      "last_reviewed": "2026-11-10"
+    },
+    {
+      "claim_id": "CLM-002",
+      "statement": "The 2015 deposition index identifies April 4, 1995 written minutes of a March 31 OxyContin launch-team meeting.",
+      "docket_id": "KY-DOC-012",
+      "related_docket_ids": [
+        "KY-DOC-002"
+      ],
+      "scope": "exhibit-identification",
+      "claim_status": "documented",
+      "establishes": "Exhibit No. 24 is listed in the original scanned deposition index with the meeting and memo dates.",
+      "does_not_establish": "The index does not independently verify the content of the minutes, every participant’s assent, or the ultimate execution of a plan.",
+      "last_reviewed": "2026-11-10"
+    },
+    {
+      "claim_id": "CLM-003",
+      "statement": "The 2015 deposition index identifies a January 25, 1999 bonus bulletin from Russ Gasdia to the prescription sales force concerning OxyContin and MS Contin.",
+      "docket_id": "KY-DOC-015",
+      "related_docket_ids": [
+        "KY-DOC-004"
+      ],
+      "scope": "exhibit-identification",
+      "claim_status": "documented",
+      "establishes": "The inspected PDF page 2 lists Exhibit No. 40, the author, date, audience, and subject of a first-quarter bonus bulletin.",
+      "does_not_establish": "It does not demonstrate the bonus formula, recipients of payments, particular sales practices, or resulting patient harms. The bulletin has not been read directly.",
+      "last_reviewed": "2026-11-10"
+    },
+    {
+      "claim_id": "CLM-004",
+      "statement": "Richard Sackler testified in 2015 that Michael Friedman headed sales and marketing in 1994 and confirmed the identified recipients of a strategy memorandum.",
+      "docket_id": "KY-DOC-013",
+      "related_docket_ids": [
+        "KY-DOC-001",
+        "KY-DOC-012"
+      ],
+      "scope": "witness-testimony",
+      "claim_status": "documented",
+      "establishes": "The cited deposition passage records questions and the witness’s answers on identities and roles in the period.",
+      "does_not_establish": "A witness’s answer is not independent verification that the memo was followed, that all statements were true, or that a recipient committed misconduct.",
+      "last_reviewed": "2026-11-10"
+    },
+    {
+      "claim_id": "CLM-005",
+      "statement": "During questioning about 1995 launch-team minutes, Richard Sackler gave testimony concerning expansion beyond cancer pain and competition from generic medications.",
+      "docket_id": "KY-DOC-014",
+      "related_docket_ids": [
+        "KY-DOC-002",
+        "KY-DOC-012"
+      ],
+      "scope": "witness-testimony",
+      "claim_status": "documented",
+      "establishes": "The located transcript passage captures the attributed testimony about the launch strategy and market competition.",
+      "does_not_establish": "The statements must be distinguished from counsel’s questions and do not replace reading the original minutes or prove an individual patient outcome.",
+      "last_reviewed": "2026-11-10"
+    },
+    {
+      "claim_id": "CLM-006",
+      "statement": "GAO described a 1996 Purdue–Abbott co-promotion arrangement that brought at least 300 Abbott sales representatives into OxyContin promotion.",
+      "docket_id": "KY-DOC-003",
+      "related_docket_ids": [],
+      "scope": "government-report",
+      "claim_status": "documented",
+      "establishes": "The federal oversight report contains the co-promotion description and the sales-representative figure.",
+      "does_not_establish": "The agreement alone does not establish illegal promotion by Abbott, misconduct by specific employees, or causation of particular overdoses.",
+      "last_reviewed": "2026-11-10"
+    },
+    {
+      "claim_id": "CLM-007",
+      "statement": "The December 2003 GAO review identified limits in available data for evaluating geographic relationships involving OxyContin abuse and diversion.",
+      "docket_id": "KY-DOC-006",
+      "related_docket_ids": [],
+      "scope": "government-report",
+      "claim_status": "documented",
+      "establishes": "The official report discusses marketing, oversight, abuse, diversion, and limits of particular supporting datasets.",
+      "does_not_establish": "The report cannot be used as a precise quantitative estimate of the contribution of any single manufacturer to all regional overdose outcomes.",
+      "last_reviewed": "2026-11-10"
+    },
+    {
+      "claim_id": "CLM-008",
+      "statement": "A May 30, 1999 Richard Sackler email discusses the commercial success of OxyContin and relationships with pain specialists.",
+      "docket_id": "KY-DOC-011",
+      "related_docket_ids": [],
+      "scope": "firsthand-email",
+      "claim_status": "documented",
+      "establishes": "An original email page in the UCSF archive contains the author’s contemporary description within an office-expansion correspondence chain.",
+      "does_not_establish": "The email does not prove inducements, misconduct by clinicians, or the author’s private motives beyond the words actually used.",
+      "last_reviewed": "2026-11-10"
+    },
+    {
+      "claim_id": "CLM-009",
+      "statement": "The UCSF–Johns Hopkins collection overview reports a $24 million settlement of the Kentucky litigation in late 2015.",
+      "docket_id": "KY-DOC-009",
+      "related_docket_ids": [],
+      "scope": "archive-summary",
+      "claim_status": "reported",
+      "establishes": "The archive’s collection description gives the settlement amount and an approximate time period.",
+      "does_not_establish": "The index page is not the original settlement judgment; it does not establish an exact signing date or validate every allegation in the complaint.",
+      "last_reviewed": null
+    },
+    {
+      "claim_id": "CLM-010",
+      "statement": "The UCSF–Johns Hopkins collection overview identifies a Kentucky lawsuit filed in October 2007 alleging improper OxyContin marketing.",
+      "docket_id": "KY-DOC-007",
+      "related_docket_ids": [],
+      "scope": "archive-summary",
+      "claim_status": "reported",
+      "establishes": "The collection overview identifies the case number, filing month, parties, and broad allegation.",
+      "does_not_establish": "A filing documents that allegations were made, not that those allegations were adjudicated as true. No exact day is established here.",
+      "last_reviewed": null
+    },
+    {
+      "claim_id": "CLM-011",
+      "statement": "STAT published an annotated timeline of Kentucky litigation documents on December 3, 2019 after litigation over access to sealed records.",
+      "docket_id": "KY-DOC-010",
+      "related_docket_ids": [],
+      "scope": "reported-summary",
+      "claim_status": "documented",
+      "establishes": "The contemporaneous publication and its linked document index establish publication of the reporting and its contents as indexed.",
+      "does_not_establish": "Publishing an index does not mean every exhibit was inspected by OAA369, that all discovery became public, or that all described assertions are proven.",
+      "last_reviewed": null
+    },
+    {
+      "claim_id": "CLM-012",
+      "statement": "STAT’s 2019 timeline reports that a December 1994 Purdue memo described plans to market OxyContin to chronic noncancer pain prescribers.",
+      "docket_id": "KY-DOC-001",
+      "related_docket_ids": [
+        "KY-DOC-012",
+        "KY-DOC-013"
+      ],
+      "scope": "reported-summary",
+      "claim_status": "reported",
+      "establishes": "The precise proposition is attributed to STAT’s reporting and a linked memo reference, not to a directly read original memo.",
+      "does_not_establish": "The document’s complete contents remain uninspected by this atlas, so the claim must not be presented as our own primary-source conclusion.",
+      "last_reviewed": null
+    }
+  ]
+}
