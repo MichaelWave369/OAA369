@@ -11,6 +11,7 @@ import './styles.css';
 import NetworkExplorer from './NetworkExplorer.jsx';
 import KentuckyDocket from './KentuckyDocket.jsx';
 import ClaimLedger from './ClaimLedger.jsx';
+import IncentiveTrail from './IncentiveTrail.jsx';
 import { relationshipAtlas } from './network.js';
 
 const SOURCE_COUNT = Object.keys(atlas.sources).length;
@@ -57,13 +58,13 @@ function Nav() {
   const [open, setOpen] = useState(false);
   const links = [
     ['#network', 'Network'], ['#timeline', 'Timeline'], ['#people', 'People & power'], ['#money', 'Money'],
-    ['#kentucky', 'Kentucky'], ['#docket', 'Docket'], ['#claims', 'Claims'], ['#sources', 'Sources'],
+    ['#incentives', 'Incentives'], ['#kentucky', 'Kentucky'], ['#docket', 'Docket'], ['#claims', 'Claims'], ['#sources', 'Sources'],
   ];
   return <header className="site-header">
     <a className="brand" href="#top" aria-label="OAA369, back to top"><span className="brand-symbol">O<span>·</span>A</span><span className="brand-text">OPIOID<br/>ACCOUNTABILITY<br/><b>ATLAS</b></span></a>
     <button type="button" className="menu-toggle" aria-expanded={open} aria-label={open ? 'Close navigation' : 'Open navigation'} onClick={() => setOpen(!open)}>{open ? <X size={22}/> : <Menu size={22}/>}</button>
     <nav className={open ? 'navigation open' : 'navigation'} aria-label="Main navigation">{links.map(([href, label]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}</nav>
-    <span className="header-meta"><span className="live-dot" /> INDEPENDENT RESEARCH · v0.9</span>
+    <span className="header-meta"><span className="live-dot" /> INDEPENDENT RESEARCH · v1.0</span>
   </header>;
 }
 
@@ -211,7 +212,7 @@ function Footer() {
 }
 
 function App() {
-  return <><a className="skip-link" href="#main">Skip to main content</a><Nav/><main id="main"><Hero/><div className="body-sections"><Method/><NetworkExplorer/><Timeline/><People/><Money/><Kentucky/><KentuckyDocket/><ClaimLedger/><Sources/><Next/></div></main><Footer/></>;
+  return <><a className="skip-link" href="#main">Skip to main content</a><Nav/><main id="main"><Hero/><div className="body-sections"><Method/><NetworkExplorer/><Timeline/><People/><Money/><IncentiveTrail/><Kentucky/><KentuckyDocket/><ClaimLedger/><Sources/><Next/></div></main><Footer/></>;
 }
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><App/></React.StrictMode>);

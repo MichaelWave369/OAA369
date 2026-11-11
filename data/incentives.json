@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "as_of": "2026-11-10",
+  "editorial_note": "Evidence comparison, not a model of causal impact. Quota weighting is a calculation factor; estimated company-wide bonuses are a different financial metric. Never interpolate missing years or read either as individual payouts.",
+  "panels": [
+    {
+      "id": "weights-1999",
+      "title": "1999: First-quarter calculation weights",
+      "category": "sales-quota-weight",
+      "year_label": "1999 Q1",
+      "unit": "credited sales/quota dollars per $1 of product sales",
+      "docket_id": "KY-DOC-016",
+      "claim_id": "CLM-013",
+      "source_level": "deposition-transcript-quoted-excerpt",
+      "source_note": "Figures were read by counsel from an identified 1999 bulletin during the August 2015 deposition; original standalone bulletin not independently examined.",
+      "caution": "These numbers are relative weighting factors for sales and quota calculations, not commissions paid or a direct comparison of earnings.",
+      "points": [
+        {
+          "label": "MS Contin",
+          "value": 0.5,
+          "display": "$0.50"
+        },
+        {
+          "label": "OxyContin",
+          "value": 1.15,
+          "display": "$1.15"
+        }
+      ]
+    },
+    {
+      "id": "estimated-bonuses",
+      "title": "1996 and 2001: Estimated sales bonuses tied to OxyContin",
+      "category": "company-bonus-estimate",
+      "year_label": "1996 / 2001",
+      "unit": "approximate millions of U.S. dollars, Purdue estimates cited by GAO",
+      "docket_id": "KY-DOC-017",
+      "claim_id": "CLM-015",
+      "source_level": "federal-oversight-report",
+      "source_note": "GAO-04-110 describes Purdue’s estimates of the total bonuses tied to OxyContin sales for these two years. No intermediate years are supplied in this comparison.",
+      "caution": "These figures are not independently audited paid disbursements or worker-level payments. The graph shows only the two reported years, with no connecting trend line or attribution to health outcomes.",
+      "points": [
+        {
+          "label": "1996",
+          "value": 1,
+          "display": "≈ $1 million"
+        },
+        {
+          "label": "2001",
+          "value": 40,
+          "display": "≈ $40 million"
+        }
+      ]
+    }
+  ]
+}

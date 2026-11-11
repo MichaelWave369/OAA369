@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ArrowRight, ArrowUpRight, BookOpenCheck, Check, Copy, Download, FileClock,
   Filter, GitBranch, Link2, Search, ShieldCheck } from 'lucide-react';
 import { claimLedger, scopeLabels, reviewLabels, evidenceFor, claimSummary, filterClaims, claimCitation, claimCsv } from './claims.js';
@@ -40,6 +40,7 @@ function Provenance({claim}){
 export default function ClaimLedger(){
   const [query,setQuery]=useState(''); const [scope,setScope]=useState('all');const [review,setReview]=useState('all'); const [sort,setSort]=useState('claim');
   const [selectedId,setSelectedId]=useState(claimLedger.claims[0]?.claim_id);
+  useEffect(()=>{const onFocus=e=>{const id=e?.detail?.id;if(!claimLedger.claims.some(c=>c.claim_id===id))return;setQuery('');setScope('all');setReview('all');setSelectedId(id)};window.addEventListener('oaa:focus-claim',onFocus);return()=>window.removeEventListener('oaa:focus-claim',onFocus);},[]);
   const filtered=useMemo(()=>filterClaims(claimLedger.claims,{query,scope,review,sort}),[query,scope,review,sort]);
   const selected=filtered.find(x=>x.claim_id===selectedId)||filtered[0]||null;
   const stats=claimSummary();

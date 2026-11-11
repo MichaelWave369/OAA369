@@ -10,9 +10,9 @@ const indexNodes=new Map(g.nodes.map(n=>[n.id,n]));
 const indexEdges=new Map(g.edges.map(e=>[e.id,e]));
 
 test('Kentucky dossier includes a structured sample, without pretending it is the full archive',()=>{
-  assert.equal(kentuckyDocket.version,'0.9.0');
-  assert.equal(records.length,15);
-  assert.deepEqual(docketSummary(),{total:15,checked:8,primary:3,awaiting:7,categories:7});
+  assert.equal(kentuckyDocket.version,'1.0.0');
+  assert.equal(records.length,17);
+  assert.deepEqual(docketSummary(),{total:17,checked:10,primary:3,awaiting:7,categories:7});
   assert.match(kentuckyDocket.editorial_note,/not a criminal-accusation/);
 });
 
@@ -41,7 +41,7 @@ test('secondary indexes are not marked directly checked or assigned invented rev
   assert.equal(indexed.length,7);
   assert.ok(indexed.every(r=>r.reviewed_on===null && r.reviewer===null));
   const checked=records.filter(r=>r.source_review==='locator-checked');
-  assert.equal(checked.length,5);
+  assert.equal(checked.length,7);
   assert.ok(checked.every(r=>r.reviewed_on==='2026-11-10' && r.reviewer.includes('not peer review')));
 });
 
@@ -59,7 +59,7 @@ test('docket filters are case-insensitive, conjunctive, non-mutating and chronol
   assert.ok(q.length>0 && q.every(r=>r.category==='marketing'&&r.source_review==='index-only'));
   assert.deepEqual(records,clone);
   assert.equal(filterDocket(records,{category:'absent'}).length,0);
-  const all=filterDocket();assert.equal(all.length,15);
+  const all=filterDocket();assert.equal(all.length,17);
   assert.ok(all.every((r,i)=>i===0||all[i-1].date<=r.date));
 });
 
@@ -91,7 +91,7 @@ test('GAO-linked graph records are specific, limited and pinpoint-source reviewe
 
 test('export contains clear review states and source URL but no unsourced motive or location fields',()=>{
   const csv=docketCsv();
-  assert.equal(csv.split('\r\n').length,16);
+  assert.equal(csv.split('\r\n').length,18);
   assert.ok(csv.includes('Source review')&&csv.includes('Original review pending')===false);
   assert.ok(csv.includes('index-only'));
   assert.ok(csv.includes('https://www.documentcloud.org/'));
