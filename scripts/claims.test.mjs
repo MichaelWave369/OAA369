@@ -8,11 +8,11 @@ const byId=new Map(claims.map(c=>[c.claim_id,c]));
 const records=kentuckyDocket.records;
 
 test('v0.9 claim register is bounded, non-empty, and individually identified',()=>{
- assert.equal(claimLedger.version,'0.9.0');
- assert.equal(claims.length,12);
+ assert.equal(claimLedger.version,'1.0.0');
+ assert.equal(claims.length,15);
  assert.equal(new Set(claims.map(c=>c.claim_id)).size,claims.length);
  assert.match(claimLedger.editorial_note,/not.*guilt|does not imply guilt/i);
- assert.deepEqual(claimSummary(),{total:12,original:4,passage:5,index:3});
+ assert.deepEqual(claimSummary(),{total:15,original:4,passage:8,index:3});
 });
 test('every claim resolves its docket reference and has a substantive interpretation boundary',()=>{
  for (const claim of claims){
@@ -41,7 +41,7 @@ test('original exhibit index supports a 1999 bulletin identification, not the or
  assert.match(index.source_locator,/Exhibit No. 40/);
  assert.equal(source.source_review,'index-only');
  assert.equal(corroboratingRecords(source)[0].record.id,'KY-DOC-015');
- assert.match(source.verification_gap,/bonus formulas/);
+ assert.match(source.verification_gap,/distribution\/payout records/);
  assert.match(byId.get('CLM-003').does_not_establish,/not demonstrate the bonus formula/);
 });
 test('scope guardrails reject assigning unrelated source categories to a direct source',()=>{
@@ -58,8 +58,8 @@ test('search and filters are deterministic and do not mutate canonical claims',(
  assert.equal(filterClaims(claims,{review:'index-only'}).length,3);
  assert.equal(filterClaims(claims,{scope:'exhibit-identification'}).length,3);
  assert.equal(filterClaims(claims,{review:'primary-inspected'}).length,4);
- assert.equal(filterClaims(claims,{scope:'witness-testimony'}).length,2);
- assert.equal(filterClaims(claims,{sort:'newest'}).length,12);
+ assert.equal(filterClaims(claims,{scope:'witness-testimony'}).length,4);
+ assert.equal(filterClaims(claims,{sort:'newest'}).length,15);
  assert.equal(claims.map(x=>x.claim_id).join(','),original);
 });
 test('citations preserve source levels and limitations without invented author claims',()=>{
@@ -73,7 +73,7 @@ test('citations preserve source levels and limitations without invented author c
 });
 test('CSV preserves meaningful distinctions and prevents formula injection',()=>{
  const csv=claimCsv();
- assert.equal(csv.split('\r\n').length,13);
+ assert.equal(csv.split('\r\n').length,16);
  assert.match(csv,/Does not establish/);
  assert.match(csv,/Original awaiting direct review/);
  assert.match(csv,/Exhibit identity only/);

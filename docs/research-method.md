@@ -111,3 +111,9 @@ An index of numbered exhibits in a sworn transcript can corroborate that a docum
 The January 25, 1999 sales-bonus bulletin has been identified in Richard Sackler’s 2015 deposition (Exhibit 40, transcript p. 6, PDF p. 2 of UCSF ID `hjdf0232`), but the 1999 original remains an uninspected indexed record (`KY-DOC-004`). Existence and labeling are verified, payout terms and outcomes are not.
 
 For a new claim: (1) identify source document and document class; (2) record the exact locator; (3) describe what it establishes; (4) describe what cannot be inferred; (5) tag whether the original, a passage, or only a secondary index was examined; (6) maintain correction history and reviewer notes. A graph link is not a finding of causality, conspiracy, or wrongdoing.
+
+## v1.0: incentive evidence is not payout evidence
+
+`data/incentives.json` holds two distinct series and links each to a separate reviewed docket record and bounded claim. The 1999 values are **quota-credit calculation weights quoted in deposition**, not dollars paid to staff. The 1996 and 2001 numbers are **Purdue estimates recounted by GAO**, not an independently audited cash ledger. The visual deliberately omits a connecting line and missing intervening years. Do not combine or convert these figures into individual payouts, causation scores, allegations against particular prescribers, or inferred overdose statistics.
+
+The linked January 25, 1999 bulletin remains `index-only`. The newly added `KY-DOC-016` source is **deposition transcript text** at UCSF PDF p. 84 (printed pp. 333–335), not an independent page-image inspection or the original bulletin itself. `KY-DOC-017` pinpoints the GAO report text. Current reviewer descriptions all explicitly say AI-assisted, not peer reviewed.

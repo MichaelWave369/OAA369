@@ -136,3 +136,14 @@ An indexed-only memo can be mentioned as attributed reporting, but cannot be pro
 **New cross-reference:** 2015 Kentucky deposition Exhibit 40 identifies a January 25, 1999 OxyContin/MS Contin sales bonus bulletin. This confirms **exhibit identification only**; the 1999 bulletin remains indexed-only until directly inspected. The scanned transcript’s PDF page 2 was inspected on November 10, 2026.
 
 Independent source: [UCSF archive deposition, hjdf0232](https://www.industrydocuments.ucsf.edu/docs/hjdf0232).
+
+## v1.0: Documented incentive trail
+
+The **Incentives** section compares two **different measurements** without combining their units:
+
+- **First quarter 1999 quota-credit weights**: an August 28, 2015 Kentucky deposition records counsel reading a 1999 sales bulletin as assigning **$0.50 of quota credit for each dollar in MS Contin sales** and **$1.15 per dollar in OxyContin sales**. The standalone sales bulletin is still indexed-only; testimony is reviewed as deposition testimony, not the entire bulletin. UCSF archive `hjdf0232`, PDF page 84 / transcript pp. 333–335.
+- **Purdue estimates of OxyContin-linked sales bonuses**: GAO-04-110 reports approximately **$1 million in 1996** and **$40 million in 2001**, explicitly attributed to Purdue estimates. There is no extrapolated annual series, audited individual payout history, or implied causal attribution.
+
+The two panels and citations are in `data/incentives.json`, `data/kentucky-docket.json`, `data/claims.json`; tests validate source IDs, classification, and interpretation limits. Downloadable CSV preserves both measures and warnings. Original source links: [2015 deposition transcript](https://www.industrydocuments.ucsf.edu/docs/hjdf0232) and [GAO-04-110](https://www.gao.gov/products/gao-04-110).
+
+**Unfinished work:** inspect the standalone January 25, 1999 bonus bulletin and its subsequent amendments/payroll records before claiming actual implementation or disbursement.

@@ -1,5 +1,5 @@
 {
-  "version": "0.9.0",
+  "version": "1.0.0",
   "as_of": "2026-11-10",
   "editorial_note": "Hand-curated bounded claim register. The linked docket record is the evidence source of truth. Exhibit lists, sworn testimony and reporter summaries must not be relabeled as direct review of an underlying document. A claim does not imply guilt or causation.",
   "claims": [
@@ -149,6 +149,46 @@
       "establishes": "The precise proposition is attributed to STAT’s reporting and a linked memo reference, not to a directly read original memo.",
       "does_not_establish": "The document’s complete contents remain uninspected by this atlas, so the claim must not be presented as our own primary-source conclusion.",
       "last_reviewed": null
+    },
+    {
+      "claim_id": "CLM-013",
+      "statement": "The August 2015 Kentucky deposition transcript records counsel reading 1999 first-quarter sales/quota weights of $0.50 per MS Contin sales dollar and $1.15 per OxyContin sales dollar from an identified January 25, 1999 bulletin.",
+      "docket_id": "KY-DOC-016",
+      "related_docket_ids": [
+        "KY-DOC-004",
+        "KY-DOC-015"
+      ],
+      "scope": "witness-testimony",
+      "claim_status": "documented",
+      "establishes": "The deposition transcript contains the stated weighting figures in counsel’s questions about the identified sales bulletin and the witness’s immediate responses on printed pp. 333–334.",
+      "does_not_establish": "The standalone bulletin has not been independently inspected, the weighting is not the same as a commission rate or actual bonus paid, and the testimony is not proof of how much any worker received or any patient outcome.",
+      "last_reviewed": "2026-11-10"
+    },
+    {
+      "claim_id": "CLM-014",
+      "statement": "In the 2015 Kentucky deposition, Richard Sackler characterized the first-quarter 1999 bonus bulletin as reducing emphasis on MS Contin and increasing emphasis on OxyContin, while expressing uncertainty about incentive details.",
+      "docket_id": "KY-DOC-016",
+      "related_docket_ids": [
+        "KY-DOC-004"
+      ],
+      "scope": "witness-testimony",
+      "claim_status": "documented",
+      "establishes": "The witness’s responses in the original deposition transcript describe his understanding of incentive focus, alongside qualifications about what he recalled and whether he read the sales bulletin.",
+      "does_not_establish": "The witness’s characterization is not an independent audit of implemented commission formulas, not evidence of particular recipients or amounts, and not proof that these weights caused any specific prescribing or health outcome.",
+      "last_reviewed": "2026-11-10"
+    },
+    {
+      "claim_id": "CLM-015",
+      "statement": "The 2003 GAO report states that Purdue estimated total sales bonuses tied to OxyContin at approximately $1 million in 1996 and approximately $40 million in 2001.",
+      "docket_id": "KY-DOC-017",
+      "related_docket_ids": [
+        "KY-DOC-006"
+      ],
+      "scope": "government-report",
+      "claim_status": "documented",
+      "establishes": "The federal GAO report explicitly gives two Purdue-estimated annual totals for bonuses tied to OxyContin sales, identifying them as estimates for 1996 and 2001 rather than a payout-by-person ledger.",
+      "does_not_establish": "These estimated totals do not identify individual bonus recipients, amounts of verified cash disbursements, intervening years, the same metric as first-quarter 1999 weighting, or the causal contribution of bonuses to any overdose death.",
+      "last_reviewed": "2026-11-10"
     }
   ]
 }
