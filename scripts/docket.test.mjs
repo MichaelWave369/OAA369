@@ -10,9 +10,9 @@ const indexNodes=new Map(g.nodes.map(n=>[n.id,n]));
 const indexEdges=new Map(g.edges.map(e=>[e.id,e]));
 
 test('Kentucky dossier includes a structured sample, without pretending it is the full archive',()=>{
-  assert.equal(kentuckyDocket.version,'0.8.0');
-  assert.equal(records.length,14);
-  assert.deepEqual(docketSummary(),{total:14,checked:7,primary:2,awaiting:7,categories:7});
+  assert.equal(kentuckyDocket.version,'0.9.0');
+  assert.equal(records.length,15);
+  assert.deepEqual(docketSummary(),{total:15,checked:8,primary:3,awaiting:7,categories:7});
   assert.match(kentuckyDocket.editorial_note,/not a criminal-accusation/);
 });
 
@@ -59,7 +59,7 @@ test('docket filters are case-insensitive, conjunctive, non-mutating and chronol
   assert.ok(q.length>0 && q.every(r=>r.category==='marketing'&&r.source_review==='index-only'));
   assert.deepEqual(records,clone);
   assert.equal(filterDocket(records,{category:'absent'}).length,0);
-  const all=filterDocket();assert.equal(all.length,14);
+  const all=filterDocket();assert.equal(all.length,15);
   assert.ok(all.every((r,i)=>i===0||all[i-1].date<=r.date));
 });
 
@@ -91,7 +91,7 @@ test('GAO-linked graph records are specific, limited and pinpoint-source reviewe
 
 test('export contains clear review states and source URL but no unsourced motive or location fields',()=>{
   const csv=docketCsv();
-  assert.equal(csv.split('\r\n').length,15);
+  assert.equal(csv.split('\r\n').length,16);
   assert.ok(csv.includes('Source review')&&csv.includes('Original review pending')===false);
   assert.ok(csv.includes('index-only'));
   assert.ok(csv.includes('https://www.documentcloud.org/'));
@@ -135,7 +135,7 @@ test('newest sorting keeps deterministic reverse chronological order',()=>{
  const view=filterDocket(records,{sort:'newest'});
  assert.equal(view[0].id,'KY-DOC-010');
  assert.equal(view[view.length-1].id,'KY-DOC-001');
- assert.deepEqual(filterDocket(records,{review:'primary-inspected'}).map(x=>x.id),['KY-DOC-011','KY-DOC-012']);
+ assert.deepEqual(filterDocket(records,{review:'primary-inspected'}).map(x=>x.id),['KY-DOC-011','KY-DOC-012','KY-DOC-015']);
 });
 
 test('export includes archival provenance with no synthetic page for indexed records',()=>{

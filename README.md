@@ -121,8 +121,18 @@ An inspected page of the [August 28, 2015 Richard Sackler deposition transcript]
 The new cross-references carry `scope: exhibit-metadata-only`, a fixed source locator, and a link to the inspected primary exhibit index (KY-DOC-012). The UI offers direct navigation between records and CSV exports retain the scope and locator. Integrity tests reject missing cross-reference records, duplicated links and any attempt to mislabel exhibit identification as full-text verification. This research is AI-assisted and not external peer review.
 
 
-## v0.8 · Evidence-chain testimony cross-reference
+## v0.9 · Evidence-chain testimony cross-reference
 
 The Kentucky docket now distinguishes **deposition exhibit metadata** from **witness answers about an exhibit**. Two source-passage-located records were added from Richard Sackler's August 28, 2015 sworn deposition transcript (UCSF archive `hjdf0232`, transcript pp. 103–104 and 174–176). These are *testimony about the 1994 memo and 1995 meeting minutes*; they do not certify inspection of those documents. The original DocumentCloud links continued to block access in this research environment (HTTP 403), so the two original documents retain `index-only` status.
 
 The inspector supports two-way navigation: historical document → corroborating source → historical document, each with an explicit scope label and an outstanding-verification note. The CSV export and citation copying preserve these caveats. No new criminal allegations or attributed downstream health outcomes were added. See [`docs/research-method.md`](docs/research-method.md).
+
+## Claim provenance matrix (v0.9)
+
+The **Claims** tab is a separately validated, hand-curated register in `data/claims.json`. Every item records a single bounded proposition, its *underlying docket record*, the evidentiary scope, the precise claim supported, and an explicit **does not establish** statement. The claim tool derives source-review level from `data/kentucky-docket.json` rather than accepting an invented `verified` flag.
+
+An indexed-only memo can be mentioned as attributed reporting, but cannot be promoted to direct inspection through a deposition index, an archived title or a graph connection. New claims must pass `scripts/claims.test.mjs` and editorial review. The page supports source-class and audit-state filters, interactive docket navigation, reproducible citation copying, and JSON/CSV exports.
+
+**New cross-reference:** 2015 Kentucky deposition Exhibit 40 identifies a January 25, 1999 OxyContin/MS Contin sales bonus bulletin. This confirms **exhibit identification only**; the 1999 bulletin remains indexed-only until directly inspected. The scanned transcript’s PDF page 2 was inspected on November 10, 2026.
+
+Independent source: [UCSF archive deposition, hjdf0232](https://www.industrydocuments.ucsf.edu/docs/hjdf0232).

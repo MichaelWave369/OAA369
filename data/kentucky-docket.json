@@ -1,7 +1,7 @@
 {
-  "version": "0.8.0",
+  "version": "0.9.0",
   "as_of": "2026-11-10",
-  "editorial_note": "Evidence dossier, not a criminal-accusation directory. Primary-source exhibit indexes can corroborate dates and identities of documents without verifying their contents. Indexed-only originals remain uninspected. This is a curated sample, not the complete Kentucky archive. v0.8 adds testimony-specific cross-references: testimony about a memo is not inspection of the memo itself.",
+  "editorial_note": "Evidence dossier, not a criminal-accusation directory. Primary-source exhibit indexes can corroborate dates and identities of documents without verifying their contents. Indexed-only originals remain uninspected. This is a curated sample, not the complete Kentucky archive. v0.8 adds testimony-specific cross-references: testimony about a memo is not inspection of the memo itself. v0.9 separately indexes a 1999 sales bulletin as deposition Exhibit 40; exhibit identity is not review of its pages.",
   "records": [
     {
       "id": "KY-DOC-001",
@@ -125,7 +125,15 @@
       "reviewed_on": null,
       "reviewer": null,
       "correction_history": [],
-      "related_edge_ids": []
+      "related_edge_ids": [],
+      "corroborating_records": [
+        {
+          "record_id": "KY-DOC-015",
+          "scope": "exhibit-metadata-only",
+          "locator": "Richard Sackler Aug. 28, 2015 deposition exhibit index, PDF page 2, transcript page 6, Exhibit 40, identifies a Jan. 25, 1999 bonus bulletin from Russ Gasdia relating to OxyContin and MS Contin; the bulletin itself was not inspected."
+        }
+      ],
+      "verification_gap": "Obtain and inspect all pages of Exhibit 40, including the bonus formulas, qualification rules, and any accompanying memos, before assessing incentive details or downstream effects."
     },
     {
       "id": "KY-DOC-005",
@@ -399,6 +407,35 @@
       "correction_history": [],
       "related_edge_ids": [],
       "verification_gap": "Review the original Exhibit 24 minutes, especially surrounding context, intended audiences, and dates, before any direct-memo-content certification."
+    },
+    {
+      "id": "KY-DOC-015",
+      "date": "2015-08-28",
+      "date_precision": "day",
+      "title": "Deposition exhibit index identifies a 1999 sales bonus bulletin",
+      "category": "testimony",
+      "record_type": "Sworn deposition transcript — exhibit index",
+      "summary": "The August 28, 2015 Richard Sackler deposition exhibit index identifies Exhibit 40 as a January 25, 1999 sales bulletin from Russ Gasdia to the prescription sales force, described as concerning first-quarter bonus payouts for OxyContin and MS Contin. This is direct evidence of how the bulletin was identified in litigation, not inspection of the bulletin itself.",
+      "claim_status": "documented",
+      "source_review": "primary-inspected",
+      "source_id": "ucsf_ky",
+      "source_locator": "UCSF archive item hjdf0232, downloadable deposition PDF page 2, printed transcript page 6, lines 7–10: Exhibit No. 40, indexed at deposition transcript p. 331, described as sales bulletin dated Jan. 25, 1999 from Russ Gasdia on first-quarter bonus payouts.",
+      "document_url": "https://download.industrydocuments.ucsf.edu/h/j/d/f/hjdf0232/hjdf0232.pdf",
+      "archive_url": "https://www.industrydocuments.ucsf.edu/docs/hjdf0232",
+      "archive_id": "hjdf0232",
+      "document_page": 2,
+      "document_label": "Open inspected deposition exhibit index (UCSF PDF)",
+      "entity_ids": [
+        "o_purdue",
+        "d_oxy",
+        "l_ky"
+      ],
+      "caution": "An exhibit index establishes document identification, not the complete contents, calculation of payouts, payment history, sales behavior, legal culpability, or causation of patient harms. The bonus bulletin remains separately indexed-only.",
+      "reviewed_on": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted visual review of original scanned deposition PDF page 2; not peer review",
+      "correction_history": [],
+      "related_edge_ids": [],
+      "verification_gap": "The actual January 25, 1999 bulletin, including its charts and distribution list, must be inspected separately before making granular claims about incentive design."
     }
   ]
 }
