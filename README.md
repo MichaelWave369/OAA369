@@ -65,11 +65,11 @@ Independent project. Not affiliated with the UCSF–Johns Hopkins Opioid Industr
 
 MIT license applies to **original code and writing only**, not outside court documents, images, third-party archives, or news articles linked from the research dataset.
 
-## Recursive evidence network (v0.4)
+## Recursive evidence network (v0.5)
 
-The new **Network** tab provides an interactive, source-labeled entity graph with one-to-three-hop expansion, entity search, per-relationship evidence, a path explainer, and JSON/CSV export. It starts with Purdue Pharma and **32 seeded entities plus 42 attributed relationships**, including the 2003 GAO investigation and the Knoa Foundation. A link to a relevant source is not the same as a verified pinpoint citation. Clicking a node inspects its links; **Expand from this entity** recovers its next documented branches. Reported relationships can be hidden with a toggle.
+The new **Network** tab provides an interactive, source-labeled entity graph with one-to-three-hop expansion, entity search, per-relationship evidence, a path explainer, and JSON/CSV export. It starts with Purdue Pharma and **35 seeded entities plus 46 attributed relationships**, including the 2003 GAO investigation and the Knoa Foundation. A link to a relevant source is not the same as a verified pinpoint citation. Clicking a node inspects its links; **Expand from this entity** recovers its next documented branches. Reported relationships can be hidden with a toggle.
 
-The graph is **not** an allegation network: a link shows a described public relationship, not shared motive, wrongdoing, or causal responsibility. The current seed has **9 source-locator-checked links** and **33 links awaiting pinpoint review**. The UI shows these states explicitly and includes a **Pinpoint-reviewed links only** toggle. "Source-locator checked" means an initial **AI-assisted** source comparison, **not** an external peer review or judicial finding. See [`docs/research-method.md`](docs/research-method.md).
+The graph is **not** an allegation network: a link shows a described public relationship, not shared motive, wrongdoing, or causal responsibility. The current seed has **13 source-locator-checked links** and **33 links awaiting pinpoint review**. The UI shows these states explicitly and includes a **Pinpoint-reviewed links only** toggle. "Source-locator checked" means an initial **AI-assisted** source comparison, **not** an external peer review or judicial finding. See [`docs/research-method.md`](docs/research-method.md).
 
 Every graph edge has a stable `claim_id`, source references, review status, source locator when available, `start_date`, `end_date`, date precision, reviewer, last-reviewed date, and correction history. Dates of uncertain precision are not silently treated as exact. CSV exports preserve this metadata.
 
@@ -89,3 +89,18 @@ The validator requires an exact locator, existing reviewed entity identities, re
 - [DOJ McKinsey Agreed Statement of Facts (Dec. 13, 2024)](https://www.justice.gov/archives/opa/media/1380371/dl): paragraphs 3 and 17–18 document the 2004–2019 consulting work.
 - [New York AG (May 1, 2026)](https://ag.ny.gov/press-release/2026/attorney-general-james-announces-shutdown-opioid-manufacturer-purdue-pharma): Purdue's shutdown, transfer to Knoa Pharma and ownership by the Knoa Foundation.
 - [UCSF–JHU Kentucky documents archive](https://www.industrydocuments.ucsf.edu/opioids/collections/kentucky-opioid-litigation-documents/): Kentucky litigation background and the 281-document collection.
+
+
+## Kentucky source docket (v0.5)
+
+The new **Docket** section is a searchable, inspectable index of public Kentucky litigation documents and government reports. Data lives in `data/kentucky-docket.json` and is exportable as JSON or CSV.
+
+- `locator-checked` means the public source passage cited by the docket record was inspected at the section level by an initial AI-assisted research pass. It is **not** peer review, nor always a first-hand inspection of the original underlying company document.
+- `index-only` means a source such as STAT or the UCSF–JHU collection points to an original document, but that original has **not** been directly verified in this research pass. It is not promoted into an independently validated claim.
+- Month or year dates are sorting placeholders where source metadata lacks exact day precision; never treat them as asserted document dates.
+- The docket does not auto-generate graph edges. New graph relationships require a separate, attributable source check and review.
+- Network links from the docket focus named public entities, not individuals' private addresses or locations.
+
+The 2003 GAO report also supports narrowly described new links to Abbott Laboratories (1996 co-promotion), IMS Health (prescribing data), DEA (attributed oversight concerns) and FDA (advertising citations). These are **specific commercial and regulatory relationships**, not an allegation of conspiratorial conduct by all parties.
+
+To validate locally: `npm run check`. The static site remains open-source and requires no server-side account or subscription.

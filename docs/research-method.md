@@ -38,7 +38,7 @@ Follow organizations' public conduct and public court matters, never live person
 - Motive can be explored through documents and incentives; private intentions are not directly knowable.
 - Prescription opioids have legitimate clinical uses, which is distinct from corporate misconduct and deceptive promotion.
 
-## The relationship network (v0.4)
+## The relationship network (v0.5)
 
 `data/relationships.json` is a **separate ledger** of stable entity nodes and attributed edges.
 
@@ -46,7 +46,7 @@ A graph edge must include a stable ID, directional `source` and `target` IDs, a 
 
 A visible route like `A → B → C` does **not** demonstrate that A knew C, that A caused C, or that A and C collaborated. Co-occurrence does not justify creating an edge. A discovery candidate lives in the research backlog until its exact relationship is documented, independently checked and reviewed. Do not extrapolate from co-investment, corporate ownership, donations, lawsuits or geographic proximity to criminal wrongdoing.
 
-The graph distinguishes **evidence status** (`documented`, `reported`, `admitted`, `adjudicated` etc.) from **source-audit status** (`needs-review` vs `source-reviewed`). The latter means a specific passage in an identified public source has been checked for that narrow fact; **it does not mean independent peer review**. No checked status implies the individuals linked are guilty of anything. The v0.4 seed has 9 locator-checked links and 33 links still needing pinpoint review. Do not describe source-level links as fully validated claims.
+The graph distinguishes **evidence status** (`documented`, `reported`, `admitted`, `adjudicated` etc.) from **source-audit status** (`needs-review` vs `source-reviewed`). The latter means a specific passage in an identified public source has been checked for that narrow fact; **it does not mean independent peer review**. No checked status implies the individuals linked are guilty of anything. The v0.5 seed has 13 locator-checked links and 33 links still needing pinpoint review. Do not describe source-level links as fully validated claims.
 
 Every edge now carries `claim_id`, `document_locator`, `start_date`, `end_date`, `date_precision`, `reviewer`, `last_reviewed` and `correction_history`. Keep unresolved dates as null rather than implying calendar-day precision from a year or a vague period. A checked source must include an exact section, paragraph or comparable locator; whole archive titles alone do not suffice when a specific original document is available.
 
@@ -72,3 +72,12 @@ The local lead queue may contain non-public research notes, so keep it private a
 ### Future sources
 
 Consulting links to other companies, lobby disclosures, political donations, charities and investment firms are **candidate research areas, not established edges**. Only add actual relationships once public primary documents are inspected, with a dated locator and context. Avoid declaring that any large class of people or companies are linked without a record proving each link.
+
+
+## Kentucky source docket (v0.5)
+
+`data/kentucky-docket.json` records a sample of public documentary leads, not all 281 records in the Kentucky archive. Index-only records may link directly to an original document identified in contemporaneous journalism while acknowledging that the underlying file has not been independently read. Do not label those leads as locator-checked merely because a newspaper summarized the document.
+
+Every docket entry keeps a precise source index location, date precision, public entity IDs, claim classification, a caution about overinterpretation, any corresponding verified graph edge IDs, and a review status. Preserve corrections as append-only log entries. A witness affidavit is testimony, not a court ruling; a legal complaint contains allegations, not findings; a source-linked partnership does not establish misconduct.
+
+The short research pass documents the following official GAO report sections for the initial verified excerpts: marketing and promotion / co-promotion, DEA concerns in the summary, FDA citations of ads, and the section on IMS Health physician-prescribing reports. The accessible HTML report is available at `https://www.gao.gov/assets/a240885.html`.
