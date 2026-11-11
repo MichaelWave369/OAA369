@@ -15,8 +15,8 @@ const syntheticLead = () => ({
 });
 
 test('graph is expanded only through attributed and sourced public records', () => {
-  assert.equal(g.nodes.length,32);
-  assert.equal(g.edges.length,42);
+  assert.equal(g.nodes.length,35);
+  assert.equal(g.edges.length,46);
   assert.ok(atlas.sources.gao_2003.url.startsWith('https://www.gao.gov/'));
   assert.ok(atlas.sources.doj_mckinsey_sof.url.startsWith('https://www.justice.gov/'));
   assert.ok(g.nodes.find(n=>n.id==='o_knoa_foundation'));
@@ -45,7 +45,7 @@ test('all published edges have stable claim ID, review stage and full correction
 });
 
 test('audit totals do not mislabel sourced-but-unreviewed edges as checked', () => {
-  assert.deepEqual(reviewSummary(g),{checked:9,pending:33,total:42});
+  assert.deepEqual(reviewSummary(g),{checked:13,pending:33,total:46});
 });
 
 test('source-checked-only graph and path exclude every pending link', () => {
@@ -66,7 +66,7 @@ test('graph CSV now exports audit metadata and does not fabricate page-level fin
   assert.ok(csv.includes('"Document locator"'));
   assert.ok(csv.includes('"Source review"'));
   assert.ok(csv.includes('"OAA-REL-0038"'));
-  assert.equal(csv.split('\r\n').length,43);
+  assert.equal(csv.split('\r\n').length,47);
 });
 
 test('lead intake requires explicit review and known source identity; never adds edges',()=>{

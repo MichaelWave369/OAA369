@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { ArrowRight, ArrowUpRight, ChevronDown, Compass, Download, ExternalLink, Focus, GitBranch,
   Layers3, Link2, Search, ShieldCheck, Waypoints } from 'lucide-react';
 import { atlas, sourceUrl, statusDefinitions } from './data.js';
@@ -106,6 +106,15 @@ function RelationDetails({ edge, selectedId, onSelect }) {
 
 export default function NetworkExplorer() {
   const [root,setRoot]=useState(defaultRoot);
+  useEffect(() => {
+    function focusFromDocket(event) {
+      const id = event?.detail?.id;
+      if (!relationshipAtlas.nodes.some(n=>n.id===id)) return;
+      setRoot(id); setSelected(id); setShowAll(false); setSearch('');
+    }
+    window.addEventListener('oaa:focus-entity', focusFromDocket);
+    return () => window.removeEventListener('oaa:focus-entity',focusFromDocket);
+  }, []);
   const [selected,setSelected]=useState(defaultRoot);
   const [depth,setDepth]=useState(2);
   const [includeReported,setIncludeReported]=useState(true);

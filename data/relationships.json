@@ -1,5 +1,5 @@
 {
-  "version": "0.4.0",
+  "version": "0.5.0",
   "as_of": "2026-11-10",
   "title": "OAA369 — Sourced Entity Network",
   "editorial_note": "Relationship statements are a research seed, not findings of guilt or shared intent. Source-reviewed links have a specific locator in an official or archival source; other edges remain provisional pending a pinpoint citation review. A sourced connection is not a causal inference.",
@@ -227,6 +227,27 @@
       "short": "2003 GAO report",
       "kind": "record",
       "summary": "GAO-04-110, published December 19, 2003, describes marketing findings and expressly notes limits in causal inferences from available abuse/diversion data."
+    },
+    {
+      "id": "o_abbott",
+      "label": "Abbott Laboratories",
+      "short": "Abbott Laboratories",
+      "kind": "company",
+      "summary": "Pharmaceutical company that, according to the 2003 GAO report, supplied at least 300 sales representatives through a 1996 OxyContin co-promotion agreement with Purdue."
+    },
+    {
+      "id": "o_dea",
+      "label": "U.S. Drug Enforcement Administration",
+      "short": "DEA",
+      "kind": "regulator",
+      "summary": "Federal agency whose OxyContin marketing concerns and diversion observations are described in GAO-04-110."
+    },
+    {
+      "id": "o_ims",
+      "label": "IMS Health",
+      "short": "IMS Health",
+      "kind": "company",
+      "summary": "Pharmaceutical market-research provider identified in the 2003 GAO report as a source of physician-prescribing data used by Purdue; this is not a finding of unlawful conduct by IMS Health."
     }
   ],
   "edges": [
@@ -1236,6 +1257,94 @@
       "end_date": "2001",
       "last_reviewed": "2026-11-10",
       "reviewer": "OAA369 AI-assisted initial check; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "year"
+    },
+    {
+      "id": "r43",
+      "source": "o_purdue",
+      "target": "o_abbott",
+      "relation": "entered an OxyContin co-promotion agreement",
+      "when": "1996",
+      "status": "documented",
+      "sources": [
+        "gao_2003"
+      ],
+      "event_ids": [],
+      "note": "The reported co-promotion agreement is a commercial relationship, not by itself evidence of unlawful conduct by Abbott.",
+      "claim_id": "OAA-REL-0043",
+      "document_locator": "GAO-04-110, Results in Brief / OxyContin marketing: the 1996 co-promotion agreement supplied at least 300 additional Abbott representatives.",
+      "start_date": "1996",
+      "end_date": "1996",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted public report review; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "year"
+    },
+    {
+      "id": "r44",
+      "source": "o_dea",
+      "target": "o_purdue",
+      "relation": "expressed concern about physician targeting in OxyContin marketing",
+      "when": "2003",
+      "status": "documented",
+      "sources": [
+        "gao_2003"
+      ],
+      "event_ids": [],
+      "note": "This documents concerns attributed to DEA in a government report; it does not by itself establish individual criminal liability.",
+      "claim_id": "OAA-REL-0044",
+      "document_locator": "GAO-04-110, What GAO Found / Results in Brief: DEA concerns about the promotion of OxyContin for a broad range of conditions, including to prescribers with limited pain-management training.",
+      "start_date": "2003",
+      "end_date": "2003",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted public report review; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "year"
+    },
+    {
+      "id": "r45",
+      "source": "o_fda",
+      "target": "o_purdue",
+      "relation": "issued citations concerning OxyContin advertisements",
+      "when": "2000–2003",
+      "status": "documented",
+      "sources": [
+        "gao_2003"
+      ],
+      "event_ids": [],
+      "note": "FDA action concerns specified advertisements; it is not a claim about all prescribing or every company employee.",
+      "claim_id": "OAA-REL-0045",
+      "document_locator": "GAO-04-110, OxyContin Advertisements Violated the FD&C Act: FDA communications in May 2000 and January 2003.",
+      "start_date": "2000",
+      "end_date": "2003",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted public report review; not peer review",
+      "review_status": "source-reviewed",
+      "correction_history": [],
+      "date_precision": "year"
+    },
+    {
+      "id": "r46",
+      "source": "o_purdue",
+      "target": "o_ims",
+      "relation": "used physician-prescribing reports provided by",
+      "when": "1996–2003",
+      "status": "documented",
+      "sources": [
+        "gao_2003"
+      ],
+      "event_ids": [],
+      "note": "Purchasing or using market-research data is not by itself evidence of wrongdoing by the information provider.",
+      "claim_id": "OAA-REL-0046",
+      "document_locator": "GAO-04-110, Purdue Used Physician Prescribing Information to Market and Promote OxyContin / IMS Health prescribing data and sales-force targeting.",
+      "start_date": "1996",
+      "end_date": "2003",
+      "last_reviewed": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted public report review; not peer review",
       "review_status": "source-reviewed",
       "correction_history": [],
       "date_precision": "year"
