@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight, BookMarked, CalendarClock, Download, External
   FileClock, FileText, Filter, Link2, MapPin, Search, ShieldCheck, Waypoints } from 'lucide-react';
 import { atlas } from './data.js';
 import { relationshipAtlas } from './network.js';
-import { kentuckyDocket, docketReviewLabels, safeDocketUrl, docketSummary, filterDocket, docketCsv, docketCitation } from './docket.js';
+import { kentuckyDocket, docketReviewLabels, safeDocketUrl, docketSummary, filterDocket, docketCsv, docketCitation, corroboratingRecords } from './docket.js';
 import './docket.css';
 
 const categoryLabels = {marketing:'Marketing', distribution:'Sales & distribution', kentucky:'Kentucky response', oversight:'Oversight', testimony:'Sworn testimony', legal:'Litigation', archive:'Archival release'};
@@ -37,7 +37,7 @@ function Entry({record,selected,onSelect}) {
     <strong>{record.title}</strong><span className="docket-entry-tail">{record.record_type}<ArrowRight size={15}/></span>
   </button></li>;
 }
-function Inspector({record}) {
+function Inspector({record,onSelect}) {
   const [copied,setCopied]=useState(false);
   if(!record) return <div className="docket-inspector-empty">Select a public record to view its citation and research status.</div>;
   const source=atlas.sources[record.source_id];const original=safeDocketUrl(record.document_url);
@@ -53,6 +53,10 @@ function Inspector({record}) {
         {safeDocketUrl(source?.url)&&<a href={safeDocketUrl(source.url)} target="_blank" rel="noopener noreferrer"><Link2 size={15}/>{source.publisher} citation</a>}
       </div>
     </div>
+    {corroboratingRecords(record).length>0 && <div className="docket-detail-section docket-corroboration"><h4><BookMarked size={15}/> Independently checked exhibit identification</h4>
+      <p>The following source corroborates that a document was listed in the litigation record. <strong>It does not verify the underlying memo or meeting minutes.</strong></p>
+      {corroboratingRecords(record).map(ref => <div key={ref.record_id} className="docket-crossref"><p>{ref.locator}</p><button type="button" onClick={()=>onSelect(ref.record_id)}>Inspect {ref.record_id} <ArrowRight size={13}/></button></div>)}
+    </div>}
     <div className="docket-detail-section"><h4>Reproducible citation</h4><p className="docket-citation">{docketCitation(record)}</p><button className="docket-copy" type="button" onClick={async()=>{try { await navigator.clipboard.writeText(docketCitation(record)); setCopied(true); }catch { setCopied(false); }}}>{copied?<Check size={14}/>:<Copy size={14}/>} {copied?'Copied to clipboard':'Copy citation'}</button></div>
     <div className="docket-detail-section"><h4><ShieldCheck size={15}/> Interpretation boundary</h4><p>{record.caution}</p></div>
     <div className="docket-detail-section"><h4><Waypoints size={15}/> Connected public entities</h4><div className="docket-nodes">
@@ -87,7 +91,7 @@ export default function KentuckyDocket() {
         <div className="docket-list"><div className="docket-list-head"><span>{filtered.length} RECORD{filtered.length!==1?'S':''} IN VIEW</span><span>{sort==='oldest'?'EARLIEST FIRST':'LATEST FIRST'}</span></div>
           {filtered.length?<ol>{filtered.map(r=><Entry key={r.id} record={r} selected={record?.id===r.id} onSelect={setSelectedId}/>)}</ol>:
           <p className="docket-empty">No records match. Try a broader term or reset filters.</p>}
-        </div><aside className="docket-inspector" aria-label="Docket record inspector"><Inspector key={record?.id||'none'} record={record}/></aside>
+        </div><aside className="docket-inspector" aria-label="Docket record inspector"><Inspector key={record?.id||'none'} record={record} onSelect={setSelectedId}/></aside>
       </div>
       <div className="docket-export"><p><MapPin size={17}/> Research seed, not a complete catalog of the 281-document Kentucky collection. New claims require source review and editorial approval before becoming network links.</p>
         <div><button onClick={()=>saveFile('oaa369-kentucky-docket.json',JSON.stringify(kentuckyDocket,null,2),'application/json')} type="button"><Download size={14}/> JSON</button><button type="button" onClick={()=>saveFile('oaa369-kentucky-docket.csv','\ufeff'+docketCsv(kentuckyDocket.records),'text/csv;charset=utf-8')}><Download size={14}/> CSV</button></div>

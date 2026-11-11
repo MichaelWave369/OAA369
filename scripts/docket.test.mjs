@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { kentuckyDocket, docketReviewLabels, safeDocketUrl, docketSummary, filterDocket, docketCsv, docketCitation, validateDocketProvenance } from '../src/docket.js';
+import { kentuckyDocket, docketReviewLabels, safeDocketUrl, docketSummary, filterDocket, docketCsv, docketCitation, validateDocketProvenance, corroboratingRecords } from '../src/docket.js';
 import { atlas } from '../src/data.js';
 import { relationshipAtlas } from '../src/network.js';
 import { readFileSync } from 'node:fs';
@@ -10,9 +10,9 @@ const indexNodes=new Map(g.nodes.map(n=>[n.id,n]));
 const indexEdges=new Map(g.edges.map(e=>[e.id,e]));
 
 test('Kentucky dossier includes a structured sample, without pretending it is the full archive',()=>{
-  assert.equal(kentuckyDocket.version,'0.6.0');
-  assert.equal(records.length,11);
-  assert.deepEqual(docketSummary(),{total:11,checked:4,primary:1,awaiting:7,categories:7});
+  assert.equal(kentuckyDocket.version,'0.7.0');
+  assert.equal(records.length,12);
+  assert.deepEqual(docketSummary(),{total:12,checked:5,primary:2,awaiting:7,categories:7});
   assert.match(kentuckyDocket.editorial_note,/not a criminal-accusation/);
 });
 
@@ -59,7 +59,7 @@ test('docket filters are case-insensitive, conjunctive, non-mutating and chronol
   assert.ok(q.length>0 && q.every(r=>r.category==='marketing'&&r.source_review==='index-only'));
   assert.deepEqual(records,clone);
   assert.equal(filterDocket(records,{category:'absent'}).length,0);
-  const all=filterDocket();assert.equal(all.length,11);
+  const all=filterDocket();assert.equal(all.length,12);
   assert.ok(all.every((r,i)=>i===0||all[i-1].date<=r.date));
 });
 
@@ -91,7 +91,7 @@ test('GAO-linked graph records are specific, limited and pinpoint-source reviewe
 
 test('export contains clear review states and source URL but no unsourced motive or location fields',()=>{
   const csv=docketCsv();
-  assert.equal(csv.split('\r\n').length,12);
+  assert.equal(csv.split('\r\n').length,13);
   assert.ok(csv.includes('Source review')&&csv.includes('Original review pending')===false);
   assert.ok(csv.includes('index-only'));
   assert.ok(csv.includes('https://www.documentcloud.org/'));
@@ -135,7 +135,7 @@ test('newest sorting keeps deterministic reverse chronological order',()=>{
  const view=filterDocket(records,{sort:'newest'});
  assert.equal(view[0].id,'KY-DOC-010');
  assert.equal(view[view.length-1].id,'KY-DOC-001');
- assert.deepEqual(filterDocket(records,{review:'primary-inspected'}).map(x=>x.id),['KY-DOC-011']);
+ assert.deepEqual(filterDocket(records,{review:'primary-inspected'}).map(x=>x.id),['KY-DOC-011','KY-DOC-012']);
 });
 
 test('export includes archival provenance with no synthetic page for indexed records',()=>{
@@ -143,4 +143,47 @@ test('export includes archival provenance with no synthetic page for indexed rec
  assert.match(csv,/Original archive ID/);
  assert.match(csv,/frcf0232/);
  assert.match(docketCitation(records[0]),/secondary index only/);
+});
+
+test('deposition exhibit index is original-page verified, with a precise and narrowly bounded claim',()=>{
+ const r=records.find(r=>r.id==='KY-DOC-012');
+ assert.equal(r.archive_id,'hjdf0232');
+ assert.equal(r.document_page,1);
+ assert.equal(r.source_review,'primary-inspected');
+ assert.match(r.source_locator,/Exhibit 13/);
+ assert.match(r.source_locator,/Exhibit 24/);
+ assert.match(r.caution,/not been independently inspected/);
+ assert.equal(validateDocketProvenance(r),null);
+});
+
+test('the 1994 memo and 1995 minutes stay index-only even after exhibit index corroboration',()=>{
+ for(const id of ['KY-DOC-001','KY-DOC-002']){
+   const r=records.find(r=>r.id===id);
+   assert.equal(r.source_review,'index-only');
+   assert.equal(r.reviewed_on,null);
+   const refs=corroboratingRecords(r);
+   assert.equal(refs.length,1);
+   assert.equal(refs[0].record.id,'KY-DOC-012');
+   assert.equal(refs[0].scope,'exhibit-metadata-only');
+   assert.match(docketCitation(r),/not underlying document contents/);
+ }
+});
+
+test('corroboration cannot be fabricated, duplicated, or treated as reviewed memo content',()=>{
+ const r=records.find(r=>r.id==='KY-DOC-001');
+ for(const invalid of [
+   [{record_id:r.id,scope:'exhibit-metadata-only',locator:r.corroborating_records[0].locator}],
+   [{record_id:'non-existent',scope:'exhibit-metadata-only',locator:r.corroborating_records[0].locator}],
+   [{record_id:'KY-DOC-012',scope:'full-text-verified',locator:r.corroborating_records[0].locator}],
+   [r.corroborating_records[0],r.corroborating_records[0]],
+ ]) assert.match(validateDocketProvenance({...r,corroborating_records:invalid}),/corroboration/);
+});
+
+test('docket exporter and React inspector preserve cross-reference and review limitations',()=>{
+ const csv=docketCsv();
+ assert.match(csv,/Corroborating record IDs/);
+ assert.match(csv,/exhibit-metadata-only/);
+ const jsx=readFileSync(new URL('../src/KentuckyDocket.jsx',import.meta.url),'utf8');
+ assert.match(jsx,/Independently checked exhibit identification/);
+ assert.match(jsx,/onSelect\(ref.record_id\)/);
 });

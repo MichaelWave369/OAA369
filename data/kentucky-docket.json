@@ -1,7 +1,7 @@
 {
-  "version": "0.6.0",
+  "version": "0.7.0",
   "as_of": "2026-11-10",
-  "editorial_note": "Evidence docket, not a criminal-accusation directory. Review status distinguishes independent original-image inspection, secondary/government-source locator checks, and reporter/collection indexes. This seed is not the entire 281-document archive.",
+  "editorial_note": "Evidence dossier, not a criminal-accusation directory. Primary-source exhibit indexes can corroborate dates and identities of documents without verifying their contents. Indexed-only originals remain uninspected. This is a curated sample, not the complete Kentucky archive.",
   "records": [
     {
       "id": "KY-DOC-001",
@@ -25,7 +25,14 @@
       "reviewed_on": null,
       "reviewer": null,
       "correction_history": [],
-      "related_edge_ids": []
+      "related_edge_ids": [],
+      "corroborating_records": [
+        {
+          "record_id": "KY-DOC-012",
+          "scope": "exhibit-metadata-only",
+          "locator": "2015 sworn deposition exhibit index, PDF p. 1: Exhibit 13 identifies a Dec. 29, 1994 memo by Michael Friedman addressed to Mortimer, Raymond and Richard Sackler."
+        }
+      ]
     },
     {
       "id": "KY-DOC-002",
@@ -49,7 +56,14 @@
       "reviewed_on": null,
       "reviewer": null,
       "correction_history": [],
-      "related_edge_ids": []
+      "related_edge_ids": [],
+      "corroborating_records": [
+        {
+          "record_id": "KY-DOC-012",
+          "scope": "exhibit-metadata-only",
+          "locator": "2015 sworn deposition exhibit index, PDF p. 1: Exhibit 24 identifies Apr. 4, 1995 minutes for the Mar. 31, 1995 OxyContin Launch Team meeting."
+        }
+      ]
     },
     {
       "id": "KY-DOC-003",
@@ -284,6 +298,34 @@
       "caution": "The correspondence contains Richard Sackler’s own characterization of business relationships. It neither verifies a financial arrangement with named clinicians nor establishes any crime, causal health outcome, or personal motivation beyond the statement itself.",
       "reviewed_on": "2026-11-10",
       "reviewer": "OAA369 AI-assisted original PDF page/image inspection; not peer review",
+      "correction_history": [],
+      "related_edge_ids": []
+    },
+    {
+      "id": "KY-DOC-012",
+      "date": "2015-08-28",
+      "date_precision": "day",
+      "title": "Richard Sackler deposition: exhibit index identifies early OxyContin documents",
+      "category": "testimony",
+      "record_type": "Sworn deposition transcript — exhibit index",
+      "summary": "The original Pike County deposition transcript dated August 28, 2015 identifies two earlier Purdue records in its exhibit list: Exhibit 13, a December 29, 1994 memorandum from Michael Friedman to Mortimer, Raymond and Richard Sackler; and Exhibit 24, an April 4, 1995 memo recording the March 31 launch-team meeting. This establishes how the documents were identified as exhibits, not the truth of every statement in them.",
+      "claim_status": "documented",
+      "source_review": "primary-inspected",
+      "source_id": "ucsf_ky",
+      "source_locator": "UCSF archive item hjdf0232, PDF page 1 (four transcript pages printed on scan): deposition title/dated cover, transcript exhibit index at printed pages 3 and 4. Exhibit 13 listed on printed p. 3; Exhibit 24 listed on printed p. 4. Only the exhibit index was visually inspected for this record.",
+      "document_url": "https://download.industrydocuments.ucsf.edu/h/j/d/f/hjdf0232/hjdf0232.pdf",
+      "archive_url": "https://www.industrydocuments.ucsf.edu/docs/hjdf0232",
+      "archive_id": "hjdf0232",
+      "document_page": 1,
+      "document_label": "Read original Kentucky deposition PDF (UCSF)",
+      "entity_ids": [
+        "p_richard",
+        "o_purdue",
+        "l_ky"
+      ],
+      "caution": "Exhibit identification is independently visible in the transcript index. The complete 1994 memorandum and 1995 meeting minutes have not been independently inspected here, and the exhibit list by itself does not prove their descriptions, implementation, illegality, or causal effects.",
+      "reviewed_on": "2026-11-10",
+      "reviewer": "OAA369 AI-assisted inspection of PDF page 1 exhibit index; not peer review",
       "correction_history": [],
       "related_edge_ids": []
     }

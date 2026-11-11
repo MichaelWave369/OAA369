@@ -65,7 +65,7 @@ Independent project. Not affiliated with the UCSF–Johns Hopkins Opioid Industr
 
 MIT license applies to **original code and writing only**, not outside court documents, images, third-party archives, or news articles linked from the research dataset.
 
-## Recursive evidence network (v0.6)
+## Recursive evidence network (v0.7)
 
 The new **Network** tab provides an interactive, source-labeled entity graph with one-to-three-hop expansion, entity search, per-relationship evidence, a path explainer, and JSON/CSV export. It starts with Purdue Pharma and **35 seeded entities plus 46 attributed relationships**, including the 2003 GAO investigation and the Knoa Foundation. A link to a relevant source is not the same as a verified pinpoint citation. Clicking a node inspects its links; **Expand from this entity** recovers its next documented branches. Reported relationships can be hidden with a toggle.
 
@@ -113,3 +113,9 @@ The Kentucky docket now distinguishes three separate audit states: `index-only` 
 A directly inspected May 30, 1999 archived email (UCSF `frcf0232`, PDF p. 1, exhibit p. 89, Bates PDD9570163) is included as `KY-DOC-011`. It establishes what that email says, not a financial arrangement or illegal act by anybody. The seven older entries still awaiting direct original review remain in the queue.
 
 Users can filter by evidence level, reverse chronology, and copy a citation including review status and original link. New data must pass automated provenance checks; verified state requires page-level locator and review metadata.
+
+## v0.7: metadata corroboration is not content verification
+
+An inspected page of the [August 28, 2015 Richard Sackler deposition transcript](https://www.industrydocuments.ucsf.edu/docs/hjdf0232) lists the December 29, 1994 Friedman strategy memo as Exhibit 13 and the April 4, 1995 summary of the March 31 launch-team meeting as Exhibit 24. We attach those references to the corresponding 1994 and 1995 docket entries **only to corroborate their existence, date, type and named participants**. The underlying exhibits were not visually inspected in this upgrade. Their `source_review` stays `index-only` and they contribute **zero** extra verified-original counts.
+
+The new cross-references carry `scope: exhibit-metadata-only`, a fixed source locator, and a link to the inspected primary exhibit index (KY-DOC-012). The UI offers direct navigation between records and CSV exports retain the scope and locator. Integrity tests reject missing cross-reference records, duplicated links and any attempt to mislabel exhibit identification as full-text verification. This research is AI-assisted and not external peer review.

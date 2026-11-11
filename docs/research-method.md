@@ -90,3 +90,7 @@ The short research pass documents the following official GAO report sections for
 - `primary-inspected`: an actual original document image/PDF page was visually inspected. Document ID, PDF page, date, review date, independent link to archive catalog, and interpretation caveat are required.
 
 All tiers are *source-audit states*, not guilt categories. A document can faithfully show that a person **said** something without proving the statement's truth or any downstream causation. Copy-ready citations preserve these distinctions. Source checks here were AI-assisted; neither peer review nor full forensic authentication is implied.
+
+## v0.7: corroboration without over-claiming
+
+An index of numbered exhibits in a sworn transcript can corroborate that a document was identified in litigation with a given date, description, author, and recipients. **It does not verify all assertions inside the underlying exhibit.** `corroborating_records` only accepts `exhibit-metadata-only` and must link to a separately inspected original index with a precise locator. The indexed target remains `index-only`; review state never automatically inherits across a cross-reference. A researcher must inspect the underlying source before promoting that underlying document to `primary-inspected`. The August 2015 transcript (UCSF `hjdf0232`) is an archive source, not a court holding that the marketing was unlawful.
